@@ -1,16 +1,19 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, Link } from "react-router";
 import products from "../assets/products";
 import { CartContext } from "../context/CartContext";
 import Toast from "../components/Toast";
+import type { Product as ProductType } from "../types/Product";
 
 function Product() {
   const { id } = useParams();
-  const product = products.find((p) => p.id === id);
+  const product: ProductType | undefined = products.find((p) => p.id === id);
   const { addToCart } = useContext(CartContext);
   const [showToast, setShowToast] = useState(false);
 
   function handleAddToCart() {
+    if (!product) return;
+
     addToCart(product);
     setShowToast(true);
   }
