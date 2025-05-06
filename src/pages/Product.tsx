@@ -1,22 +1,12 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { useParams, Link } from "react-router";
 import products from "../assets/products";
-import { CartContext } from "../context/CartContext";
-import Toast from "../components/Toast";
 import type { Product as ProductType } from "../types/Product";
+import AddToCartButton from "../components/AddToCartButton";
 
 function Product() {
   const { id } = useParams();
   const product: ProductType | undefined = products.find((p) => p.id === id);
-  const { addToCart } = useContext(CartContext);
-  const [showToast, setShowToast] = useState(false);
-
-  function handleAddToCart() {
-    if (!product) return;
-
-    addToCart(product);
-    setShowToast(true);
-  }
 
   if (!product) {
     return (
@@ -35,7 +25,7 @@ function Product() {
       <p className="mt-4">Layout: {product.layout}</p>
       <p className="mt-2">Price: ¥{product.price.toLocaleString()}</p>
 
-      <button onClick={handleAddToCart}>カートに追加</button>
+      <AddToCartButton product={product} />
 
       <Link
         to="/products"
@@ -43,13 +33,6 @@ function Product() {
       >
         商品一覧に戻る
       </Link>
-
-      {showToast && (
-        <Toast
-          message="カートに追加しました！"
-          onClose={() => setShowToast(false)}
-        />
-      )}
     </div>
   );
 }
