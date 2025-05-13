@@ -5,4 +5,5 @@ export interface Product {
   description?: string;
   layout?: string;
   image?: string;
+  switches?: string[];
 }

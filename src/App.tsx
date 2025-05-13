@@ -13,55 +13,57 @@ function App() {
   return (
     <CartProvider>
       <BrowserRouter>
-        <div className="bg-white text-kylith min-h-screen">
-          <header className="bg-white px-8 py-4 flex justify-between items-center shadow-md sticky top-0 z-20 text-kylith">
-            <div className="flex items-center space-x-10">
-              <Link to="/">
-                <h1 className="text-4xl font-bold font-sans">Kylith</h1>
-              </Link>
+        <div className="bg-white text-kylith min-h-screen ">
+          <header className="bg-white shadow-md sticky top-0 z-20 text-kylith">
+            <div className="flex justify-between items-center w-full max-w-screen-xl mx-auto px-8 py-4">
+              <div className="flex items-center space-x-10">
+                <Link to="/">
+                  <h1 className="text-4xl font-bold font-sans">Kylith</h1>
+                </Link>
 
-              <nav className="space-x-4 text-sm">
-                <Link
-                  to="/products"
-                  className="text-kylith hover:text-kylith-dark transition"
-                >
-                  KEYBOARD
-                </Link>
-                <Link
-                  to="/products"
-                  className="text-kylith hover:text-kylith-dark transition"
-                >
-                  ACCESSORIES
-                </Link>
-                <Link
-                  to="/products"
-                  className="text-kylith hover:text-kylith-dark transition"
-                >
-                  SUPPORT
-                </Link>
-              </nav>
-            </div>
-
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center border border-kylith rounded px-2 py-1">
-                <input type="text" />
-                <FiSearch className="text-kylith text-xl " />
+                <nav className="space-x-4 text-sm">
+                  <Link
+                    to="/products"
+                    className="text-kylith hover:text-kylith-dark transition"
+                  >
+                    KEYBOARD
+                  </Link>
+                  <Link
+                    to="/products"
+                    className="text-kylith hover:text-kylith-dark transition"
+                  >
+                    ACCESSORIES
+                  </Link>
+                  <Link
+                    to="/products"
+                    className="text-kylith hover:text-kylith-dark transition"
+                  >
+                    SUPPORT
+                  </Link>
+                </nav>
               </div>
 
-              <nav className="flex items-center space-x-6">
-                <Link
-                  to="/cart"
-                  className="text-kylith hover:text-kylith-dark transition text-xl"
-                >
-                  <FiUser />
-                </Link>
-                <Link
-                  to="/cart"
-                  className="text-kylith hover:text-kylith-dark transition text-xl"
-                >
-                  <FiShoppingCart />
-                </Link>
-              </nav>
+              <div className="flex items-center space-x-6">
+                <div className="flex items-center border border-kylith rounded px-2 py-1">
+                  <input type="text" />
+                  <FiSearch className="text-kylith text-xl " />
+                </div>
+
+                <nav className="flex items-center space-x-6">
+                  <Link
+                    to="/cart"
+                    className="text-kylith hover:text-kylith-dark transition text-xl"
+                  >
+                    <FiUser />
+                  </Link>
+                  <Link
+                    to="/cart"
+                    className="text-kylith hover:text-kylith-dark transition text-xl"
+                  >
+                    <FiShoppingCart />
+                  </Link>
+                </nav>
+              </div>
             </div>
           </header>
 

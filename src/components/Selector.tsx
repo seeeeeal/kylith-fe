@@ -1,10 +1,13 @@
 import React from "react";
 import clsx from "clsx";
+import ReactMarkdown from "react-markdown";
 
 type SelectorItem = {
   label: string;
   value: string;
   image?: string;
+  desc?: string;
+  tags?: string[];
 };
 
 type SelectorProps = {
@@ -20,6 +23,9 @@ export default function Selector({
   onSelect,
   items,
 }: SelectorProps) {
+  const selectedItem = items.find((item) => item.value === selected);
+  console.log("Selected item:", selectedItem);
+
   return (
     <div>
       <div>
@@ -34,7 +40,7 @@ export default function Selector({
               item.image && "min-w-[6em] max-w-[10em]",
               selected === item.value
                 ? "font-semibold bg-gray-100 text-kylith ring-2 ring-kylith-accent"
-                : "text-secondary hover:bg-gray-50 hover:ring-1 hover:ring-kylith-accent/50 hover:text-kylith ring-transparent"
+                : "text-secondary hover:bg-gray-50 ring-transparent hover:ring-1 hover:ring-kylith-accent hover:text-kylith"
             )}
             role="button"
             tabIndex={0}
@@ -43,7 +49,7 @@ export default function Selector({
           >
             {item.image && (
               <img
-                className="w-12 h-12 mb-2"
+                className="w-16 h-16 object-contain rounded mb-2"
                 src={item.image}
                 alt={item.label}
               />
@@ -52,6 +58,22 @@ export default function Selector({
           </li>
         ))}
       </ul>
+      {/* Render the description of the currently selected item using ReactMarkdown, if available. */}
+      {items.find((item) => item.value === selected)?.desc && (
+        <div className="mt-4 text-xs text-gray-500 leading-relaxed [&_a]:text-kylith-accent">
+          <ReactMarkdown>{selectedItem!.desc!}</ReactMarkdown>
+          <div className="text-xs text-secondary mt-1">
+            {selectedItem?.tags?.map((tag) => (
+              <span
+                key={tag}
+                className="bg-kylith/50 text-white rounded px-1 py-0.5 text-[clamp(10px,0.7vw,12px)] leading-none mr-1"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
