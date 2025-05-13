@@ -15,12 +15,12 @@ function App() {
       <BrowserRouter>
         <div className="bg-white text-kylith min-h-screen">
           <header className="bg-white px-8 py-4 flex justify-between items-center shadow-md sticky top-0 z-20 text-kylith">
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-10">
               <Link to="/">
                 <h1 className="text-4xl font-bold font-sans">Kylith</h1>
               </Link>
 
-              <nav className="space-x-4 text-xs">
+              <nav className="space-x-4 text-sm">
                 <Link
                   to="/products"
                   className="text-kylith hover:text-kylith-dark transition"
@@ -32,6 +32,12 @@ function App() {
                   className="text-kylith hover:text-kylith-dark transition"
                 >
                   ACCESSORIES
+                </Link>
+                <Link
+                  to="/products"
+                  className="text-kylith hover:text-kylith-dark transition"
+                >
+                  SUPPORT
                 </Link>
               </nav>
             </div>
