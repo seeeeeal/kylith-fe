@@ -3,6 +3,7 @@ import { CartContext } from "../context/CartContext";
 import type { Product } from "../types/Product";
 import Toast from "./Toast";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { KuiButton } from "@/components/kui";
 
 function AddToCartButton({ product }: { product: Product }) {
   const { addToCart } = useContext(CartContext);
@@ -17,11 +18,11 @@ function AddToCartButton({ product }: { product: Product }) {
 
   return (
     <div>
-      <div className="inline-flex items-center gap-1 text-xs text-green-600 bg-green-100 px-2 py-0.5 rounded-full mb-2">
+      <div className="inline-flex items-center gap-1 text-xs text-green-600 bg-green-100 px-2 py-0.5 rounded-full mb-4">
         <span className="w-2 h-2 bg-green-500 rounded-full"></span> 在庫あり
       </div>
 
-      {/* <div className="inline-flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+      {/* <div className="inline-flex items-center gap-1 text-xs text-gray-500 bg-kui-default/5 px-2 py-0.5 rounded-full">
         <span className="w-2 h-2 bg-gray-400 rounded-full"></span> 在庫なし
       </div> */}
 
@@ -41,12 +42,17 @@ function AddToCartButton({ product }: { product: Product }) {
             <FiPlus />
           </button>
         </div>
-        <button
-          onClick={handleClick}
-          className="h-12 flex-1 px-4 bg-kylith text-white rounded-full hover:bg-kylith-dark transition duration-200 focus:outline-none focus:ring-2 focus:ring-kylith-accent focus:ring-opacity-50"
+
+        <KuiButton
+          variant="solid"
+          color="default"
+          size="large"
+          shape="round"
+          onClick={() => handleClick}
+          className="flex-1"
         >
           カートに追加
-        </button>
+        </KuiButton>
         {showToast && (
           <Toast
             message="カートに追加しました！"

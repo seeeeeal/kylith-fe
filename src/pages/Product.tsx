@@ -5,9 +5,11 @@ import AddToCartButton from "../components/AddToCartButton";
 import Breadcrumbs from "../components/Breadcrumbs";
 import Selector from "../components/Selector";
 import { FiChevronRight, FiHeart } from "react-icons/fi";
+import { KuiIconButton } from "@/components/kui";
 // mock data.
 import products from "../assets/products";
 import switches from "../assets/switches";
+import PriceTag from "@/components/PriceTag";
 
 function Product() {
   const { id } = useParams();
@@ -50,17 +52,14 @@ function Product() {
       <div className="mt-4 flex items-center justify-between">
         <h2 className="text-2xl font-bold">{product.name}</h2>
 
-        <button
+        <KuiIconButton
           onClick={() => setIsFavorite(!isFavorite)}
           aria-label="お気に入りに追加"
-          className={`p-2 rounded-full transition duration-200 ${
-            isFavorite
-              ? "bg-red-100 text-red-500"
-              : "bg-gray-100 hover:bg-gray-200"
-          }`}
+          variant="filled"
+          color={isFavorite ? "danger" : "default"}
         >
           {isFavorite ? <FiHeart fill="currentColor" /> : <FiHeart />}
-        </button>
+        </KuiIconButton>
       </div>
 
       <div className="mt-4 flex space-x-8">
@@ -72,14 +71,10 @@ function Product() {
           />
         </div>
         <div className="flex flex-col space-y-4 basis-1/2">
-          <p className="flex space-x-1 items-center">
-            <span>¥</span>
-            <span className="text-3xl font-semibold">
-              {product.price.toLocaleString()}
-            </span>
-            <span className="text-xs">税込</span>
-          </p>
-          <hr className="border-gray-200" />
+          <PriceTag amount={product.price} size="large" />
+
+          <hr className="border-kui-border" />
+
           <div>
             <Selector
               title="スイッチ"
@@ -94,20 +89,28 @@ function Product() {
               }))}
             />
 
-            <button className="mt-2 text-xs text-kylith-accent flex items-center">
+            <button className="mt-2 text-xs text-kui-primary flex items-center">
               <span>スイッチ選びをサポート</span>
               <FiChevronRight />
             </button>
           </div>
-          <hr className="border-gray-200" />
+          <hr className="border-kui-border" />
           <div>
             <Selector
               title="カラー"
               selected="黒"
               onSelect={(v) => console.log(v)}
               items={[
-                { value: "黒", label: "黒", image: "/logo.png" },
-                { value: "白", label: "白", image: "/logo.png" },
+                {
+                  value: "黒",
+                  label: "黒",
+                  image: "/original-b13d8875c0376830796c926f87a903b8.webp",
+                },
+                {
+                  value: "白",
+                  label: "白",
+                  image: "/original-cc17bd86f94ae621760cb3b422667b3a.webp",
+                },
               ]}
             />
           </div>

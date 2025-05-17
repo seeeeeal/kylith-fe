@@ -31,6 +31,7 @@ export default function Selector({
       <div>
         <h3 className="text-lg">{title}</h3>
       </div>
+
       <ul className="mt-2 flex space-x-2">
         {items.map((item) => (
           <li
@@ -39,8 +40,8 @@ export default function Selector({
               "relative cursor-pointer rounded-lg flex flex-col p-2 duration-200",
               item.image && "min-w-[6em] max-w-[10em]",
               selected === item.value
-                ? "font-semibold bg-gray-100 text-kylith ring-2 ring-kylith-accent"
-                : "text-secondary hover:bg-gray-50 ring-transparent hover:ring-1 hover:ring-kylith-accent hover:text-kylith"
+                ? "font-semibold text-kui-default ring-2 ring-kui-primary bg-kui-base"
+                : "text-kui-secondary hover:bg-kui-base/50 ring-transparent hover:ring-1 hover:ring-kui-primary hover:text-kylith"
             )}
             role="button"
             tabIndex={0}
@@ -58,15 +59,18 @@ export default function Selector({
           </li>
         ))}
       </ul>
+
       {/* Render the description of the currently selected item using ReactMarkdown, if available. */}
       {items.find((item) => item.value === selected)?.desc && (
-        <div className="mt-4 text-xs text-gray-500 leading-relaxed [&_a]:text-kylith-accent">
+        <div className="mt-4 text-xs text-gray-500 leading-relaxed [&_a]:text-kui-primary">
           <ReactMarkdown>{selectedItem!.desc!}</ReactMarkdown>
-          <div className="text-xs text-secondary mt-1">
+
+          {/* Render tags if available(mainly for switch options). */}
+          <div className="text-xs text-kui-secondary/70 mt-1">
             {selectedItem?.tags?.map((tag) => (
               <span
                 key={tag}
-                className="bg-kylith/50 text-white rounded px-1 py-0.5 text-[clamp(10px,0.7vw,12px)] leading-none mr-1"
+                className="bg-kui-default/5 rounded px-1 py-0.5 text-xxs leading-none mr-1"
               >
                 {tag}
               </span>

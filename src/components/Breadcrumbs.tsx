@@ -13,25 +13,25 @@ type BreadcrumbsProps = {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav className="flex text-xs text-secondary-dark" aria-label="breadcrumb">
+    <nav className="flex text-xs text-kui-secondary" aria-label="breadcrumb">
       {items.map((item, index) => (
         <div key={index} className="flex items-center">
           {index > 0 && (
-            <span className="mx-0.5">
+            <span className="mx-1">
               <FiChevronRight />
             </span>
           )}
           {item.path ? (
             <Link
               to={item.path}
-              className="hover:text-secondary transition duration-200 truncate max-w-[200px] sm:max-w-[16rem]"
+              className="transition duration-200 truncate max-w-[200px] sm:max-w-[16rem]"
               title={item.label}
             >
               {item.label}
             </Link>
           ) : (
             <span
-              className="text-secondary truncate max-w-[200px] sm:max-w-[16rem]"
+              className="truncate max-w-[200px] sm:max-w-[16rem]"
               title={item.label}
             >
               {item.label}
