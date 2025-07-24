@@ -1,4 +1,3 @@
-import React from "react";
 import clsx from "clsx";
 import { Variant, Color } from "./types/Button";
 import classMap from "./utils/buttonClassMap";
@@ -10,7 +9,8 @@ type ButtonProps = {
   size?: "small" | "medium" | "large";
   color?: Color;
   className?: string;
-  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const baseClass =
@@ -28,10 +28,12 @@ export default function KuiIconButton({
   color = "default",
   size = "medium",
   className,
+  type = "button",
   onClick,
 }: ButtonProps) {
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={clsx(

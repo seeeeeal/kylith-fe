@@ -1,0 +1,255 @@
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+// 日本語翻訳
+const ja = {
+  nav: {
+    keyboard: "キーボード",
+    accessories: "アクセサリー",
+    support: "サポート",
+  },
+  cart: {
+    title: "カート",
+    selectAll: "全て選択",
+    removeAll: "全て削除",
+    itemsInCart: "個の商品がカートに入っています",
+    subtotal: "小計:",
+    shipping: "送料:",
+    total: "合計:",
+    taxNote: "* 価格には消費税が含まれています",
+    proceedToCheckout: "レジへ進む",
+    free: "無料",
+    addToCart: "カートに追加",
+    addedToCart: "カートに追加しました！",
+  },
+  stock: {
+    inStock: "在庫あり",
+    outOfStock: "在庫なし",
+    lowStock: "在庫残りわずか",
+    available: "利用可能",
+    unavailable: "利用不可",
+    limited: "限定",
+  },
+  product: {
+    addToCart: "カートに追加",
+    inStock: "在庫あり",
+    outOfStock: "在庫なし",
+    switch: "スイッチ",
+    color: "カラー",
+    layout: "配列",
+    switchSupport: "スイッチ選びをサポート",
+    englishLayout: "英語配列",
+    japaneseLayout: "日本語配列",
+    black: "黒",
+    white: "白",
+  },
+  checkout: {
+    shippingInfo: "お届け先情報",
+    payment: "お支払い",
+    name: "氏名",
+    postalCode: "郵便番号",
+    address: "住所",
+    phoneNumber: "電話番号",
+    cardNumber: "カード番号",
+    expirationDate: "有効期限",
+    securityCode: "セキュリティコード",
+    cardHolderName: "カードの名義人",
+    placeOrder: "注文する",
+    processing: "処理中...",
+    required: "は必須です",
+    invalidPostalCode: "正しい郵便番号を入力してください（例: 123-4567）",
+    invalidPhone: "正しい電話番号を入力してください",
+    invalidCard: "正しいカード番号を入力してください",
+    invalidExpiry: "MM/YY形式で入力してください",
+    invalidSecurityCode: "3-4桁の数字を入力してください",
+    paymentFailed: "決済に失敗しました。カード情報を確認してください。",
+    orderError: "注文処理中にエラーが発生しました。",
+  },
+  orderComplete: {
+    title: "ご注文ありがとうございます！",
+    orderNumber: "注文番号",
+    paymentAmount: "お支払い金額",
+    completed: "ご注文が正常に完了しました。",
+    emailSent: "確認メールをお送りしましたので、ご確認ください。",
+    demoNote: "※ このデモでは実際のメールは送信されません",
+    backToHome: "ホームに戻る",
+    viewProducts: "商品一覧を見る",
+  },
+  landing: {
+    hero: {
+      title: "Where performance meets style.",
+      subtitle: "Kylithは、美しさと性能を両立する次世代キーボードブランド。",
+      cta: "今すぐ見る",
+    },
+    products: "Products",
+    features: "Features",
+    featuresList: {
+      mac: {
+        title: "Mac対応",
+        desc: "OS自動切替でMacにも完璧対応。",
+      },
+      silent: {
+        title: "静音設計",
+        desc: "オフィスでも深夜でも気にならない。",
+      },
+      material: {
+        title: "高級素材",
+        desc: "アルミ＆PBTで手触りも美しさも最高。",
+      },
+      warranty: {
+        title: "5年保証",
+        desc: "長く使える安心をお届けします。",
+      },
+    },
+  },
+  filter: {
+    title: "フィルター",
+    clear: "クリア",
+    layout: "レイアウト",
+    switch: "スイッチ",
+    priceRange: "価格範囲",
+    all: "すべて",
+    results: "件の商品が見つかりました",
+  },
+  common: {
+    loading: "読み込み中...",
+    error: "エラーが発生しました",
+    notFound: "ページが見つかりません",
+    backToProducts: "商品一覧に戻る",
+  },
+};
+
+// 英語翻訳
+const en = {
+  nav: {
+    keyboard: "KEYBOARD",
+    accessories: "ACCESSORIES",
+    support: "SUPPORT",
+  },
+  cart: {
+    title: "Cart",
+    selectAll: "Select All",
+    removeAll: "Remove All",
+    itemsInCart: "items in cart",
+    subtotal: "Subtotal:",
+    shipping: "Shipping:",
+    total: "Total:",
+    taxNote: "* Prices include tax",
+    proceedToCheckout: "Proceed to Checkout",
+    free: "Free",
+    addToCart: "Add to Cart",
+    addedToCart: "Added to cart!",
+  },
+  stock: {
+    inStock: "In Stock",
+    outOfStock: "Out of Stock",
+    lowStock: "Low Stock",
+    available: "Available",
+    unavailable: "Unavailable",
+    limited: "Limited",
+  },
+  product: {
+    addToCart: "Add to Cart",
+    inStock: "In Stock",
+    outOfStock: "Out of Stock",
+    switch: "Switch",
+    color: "Color",
+    layout: "Layout",
+    switchSupport: "Switch Selection Support",
+    englishLayout: "English Layout",
+    japaneseLayout: "Japanese Layout",
+    black: "Black",
+    white: "White",
+  },
+  checkout: {
+    shippingInfo: "Shipping Information",
+    payment: "Payment",
+    name: "Name",
+    postalCode: "Postal Code",
+    address: "Address",
+    phoneNumber: "Phone Number",
+    cardNumber: "Card Number",
+    expirationDate: "Expiration Date",
+    securityCode: "Security Code",
+    cardHolderName: "Card Holder Name",
+    placeOrder: "Place Order",
+    processing: "Processing...",
+    required: "is required",
+    invalidPostalCode: "Please enter a valid postal code (e.g., 123-4567)",
+    invalidPhone: "Please enter a valid phone number",
+    invalidCard: "Please enter a valid card number",
+    invalidExpiry: "Please enter in MM/YY format",
+    invalidSecurityCode: "Please enter 3-4 digits",
+    paymentFailed: "Payment failed. Please check your card information.",
+    orderError: "An error occurred during order processing.",
+  },
+  orderComplete: {
+    title: "Thank you for your order!",
+    orderNumber: "Order Number",
+    paymentAmount: "Payment Amount",
+    completed: "Your order has been completed successfully.",
+    emailSent: "A confirmation email has been sent. Please check your inbox.",
+    demoNote: "* No actual email is sent in this demo",
+    backToHome: "Back to Home",
+    viewProducts: "View Products",
+  },
+  landing: {
+    hero: {
+      title: "Where performance meets style.",
+      subtitle:
+        "Kylith is a next-generation keyboard brand that combines beauty and performance.",
+      cta: "Shop Now",
+    },
+    products: "Products",
+    features: "Features",
+    featuresList: {
+      mac: {
+        title: "Mac Compatible",
+        desc: "Perfect compatibility with Mac through automatic OS switching.",
+      },
+      silent: {
+        title: "Silent Design",
+        desc: "No worries in the office or late at night.",
+      },
+      material: {
+        title: "Premium Materials",
+        desc: "Aluminum & PBT for the best feel and beauty.",
+      },
+      warranty: {
+        title: "5-Year Warranty",
+        desc: "We provide peace of mind for long-term use.",
+      },
+    },
+  },
+  filter: {
+    title: "Filter",
+    clear: "Clear",
+    layout: "Layout",
+    switch: "Switch",
+    priceRange: "Price Range",
+    all: "All",
+    results: "items found",
+  },
+  common: {
+    loading: "Loading...",
+    error: "An error occurred",
+    notFound: "Page not found",
+    backToProducts: "Back to Products",
+  },
+};
+
+const resources = {
+  ja: { translation: ja },
+  en: { translation: en },
+};
+
+i18n.use(initReactI18next).init({
+  resources,
+  lng: "ja", // デフォルト言語
+  fallbackLng: "ja",
+  interpolation: {
+    escapeValue: false,
+  },
+});
+
+export default i18n;

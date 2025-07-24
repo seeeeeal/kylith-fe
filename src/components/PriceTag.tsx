@@ -2,11 +2,17 @@ import clsx from "clsx";
 
 type PriceProps = {
   amount: number | string;
-  size?: "medium" | "large";
+  size?: "small" | "medium" | "large";
   taxIncluded?: boolean;
+  emphasis?: boolean;
 };
 
 const sizeClassMap = {
+  small: {
+    currency: "text-sm",
+    amount: "text-sm",
+    taxIncluded: "text-xxs",
+  },
   medium: {
     currency: "text-lg",
     amount: "text-lg",
@@ -18,21 +24,26 @@ const sizeClassMap = {
     taxIncluded: "text-xs",
   },
 };
-function PriceTag({ amount, size = "medium", taxIncluded = true }: PriceProps) {
+function PriceTag({
+  amount,
+  size = "medium",
+  taxIncluded = true,
+  emphasis = true,
+}: PriceProps) {
   return (
-    <div className="flex gap-1 items-baseline">
-      <span className={clsx("text-kui-secondary", sizeClassMap[size].currency)}>
-        ¥
-      </span>
-      <span className={clsx("font-semibold", sizeClassMap[size].amount)}>
+    <div className="flex gap-1 items-baseline text-kui-secondary">
+      <span className={sizeClassMap[size].currency}>¥</span>
+      <span
+        className={clsx(
+          " text-kui-default",
+          emphasis && "font-semibold",
+          sizeClassMap[size].amount
+        )}
+      >
         {amount.toLocaleString()}
       </span>
       {taxIncluded && (
-        <span
-          className={clsx("text-kui-secondary", sizeClassMap[size].taxIncluded)}
-        >
-          税込
-        </span>
+        <span className={sizeClassMap[size].taxIncluded}>(税込)</span>
       )}
     </div>
   );

@@ -1,12 +1,205 @@
-# React + Vite
+# Kylith - カスタムキーボード EC サイト
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Kylith** は、美しさと性能を両立するカスタムキーボードブランドを想定したモダンな EC サイトです。  
+React + TypeScript をベースに、シンプルかつ高級感のある UI を目指して設計しました。
 
-Currently, two official plugins are available:
+## 🎯 プロジェクト概要
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 目的
 
-## Expanding the ESLint configuration
+- フロントエンド開発スキルの向上
+- モダンな Web 技術の実践
+- ポートフォリオとしての活用
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 特徴
+
+- **レスポンシブデザイン**: モバイル・タブレット・デスクトップ対応
+- **国際化対応**: 日本語・英語の多言語対応
+- **カスタム UI ライブラリ**: 再利用可能なコンポーネント設計
+- **型安全性**: TypeScript による堅牢な開発
+
+## 🛠 技術スタック
+
+### フロントエンド
+
+- **React 19** - 最新の React 機能を活用
+- **TypeScript** - 型安全性と開発体験の向上
+- **Vite 6** - 高速な開発環境
+- **Tailwind CSS 4** - モダンな CSS フレームワーク
+
+### 状態管理・ルーティング
+
+- **React Context** - 軽量な状態管理
+- **React Router 7** - クライアントサイドルーティング
+
+### 国際化・UI
+
+- **i18next** - 多言語対応
+- **React Icons** - アイコンライブラリ
+- **Swiper** - タッチスライダー
+
+### 開発ツール
+
+- **PNPM** - 高速なパッケージマネージャー
+- **ESLint** - コード品質管理
+- **Prettier** - コードフォーマット
+
+## 🎨 デザインシステム
+
+### カラーパレット
+
+```css
+kui-default: #1f2937    /* メインカラー */
+kui-primary: #3B82F6    /* プライマリ */
+kui-success: #10B981    /* 成功 */
+kui-warning: #F59E0B    /* 警告 */
+kui-danger: #EF4444     /* エラー */
+```
+
+### カスタムコンポーネント
+
+- **KuiButton** - 多様なバリエーションのボタン
+- **KuiInputNumber** - 数量選択コンポーネント
+- **KuiToast** - 通知コンポーネント
+- **KuiSteps** - ステップ表示コンポーネント
+
+## 🖥 ページ構成
+
+### 主要ページ
+
+- **🏠 Home** - ヒーローセクション、注目商品、特徴紹介
+- **🛍️ Products** - 商品一覧（フィルター機能付き）
+- **📦 Product Detail** - 商品詳細（カート追加機能）
+- **🛒 Cart** - ショッピングカート（数量変更・削除）
+- **💳 Checkout** - 決済フォーム（バリデーション付き）
+- **✅ Order Complete** - 注文完了ページ
+
+### 機能
+
+- **🔍 商品検索・フィルター** - レイアウト、スイッチ、価格範囲
+- **🌐 多言語対応** - 日本語・英語切り替え
+- **📱 レスポンシブデザイン** - 全デバイス対応
+- **🎨 ダークモード対応** - テーマ切り替え（準備中）
+
+## 🚀 セットアップ
+
+### 前提条件
+
+- Node.js 18.0.0 以上
+- PNPM 8.0.0 以上
+
+### インストール
+
+```bash
+# リポジトリをクローン
+git clone [repository-url]
+cd kylith
+
+# 依存関係をインストール
+pnpm install
+
+# 開発サーバーを起動
+pnpm dev
+```
+
+### ビルド
+
+```bash
+# 本番用ビルド
+pnpm build
+
+# プレビュー
+pnpm preview
+```
+
+## 📁 プロジェクト構造
+
+```
+src/
+├── components/          # 再利用可能なコンポーネント
+│   ├── kui/            # カスタムUIライブラリ
+│   └── ...
+├── pages/              # ページコンポーネント
+├── context/            # React Context
+├── types/              # TypeScript型定義
+├── assets/             # 静的ファイル
+├── i18n/               # 国際化設定
+└── main.tsx           # エントリーポイント
+```
+
+## 🎯 実装した機能
+
+### フロントエンド機能
+
+- ✅ レスポンシブデザイン
+- ✅ 多言語対応（日本語・英語）
+- ✅ カスタム UI ライブラリ
+- ✅ 商品フィルター機能
+- ✅ ショッピングカート機能
+- ✅ フォームバリデーション
+- ✅ トースト通知
+
+### 技術的な工夫
+
+- ✅ TypeScript による型安全性
+- ✅ モジュラーなコンポーネント設計
+- ✅ パフォーマンス最適化
+- ✅ アクセシビリティ対応
+- ✅ コード品質管理
+
+## 🔮 今後の予定
+
+### 短期目標
+
+- [ ] バックエンド開発（Node.js + TypeScript）
+- [ ] データベース連携
+- [ ] 認証システム
+
+### 中期目標
+
+- [ ] Next.js 版の開発
+- [ ] SEO 最適化
+- [ ] 決済システム統合
+
+### 長期目標
+
+- [ ] PWA 対応
+- [ ] パフォーマンス最適化
+- [ ] テスト実装
+
+## 📊 技術的な学び
+
+### React/TypeScript
+
+- モダンな React Hooks の活用
+- TypeScript による型安全性の確保
+- コンポーネント設計のベストプラクティス
+
+### CSS/デザイン
+
+- Tailwind CSS による効率的なスタイリング
+- レスポンシブデザインの実装
+- デザインシステムの構築
+
+### 開発体験
+
+- Vite による高速開発環境
+- PNPM による効率的なパッケージ管理
+- ESLint によるコード品質管理
+
+## 🤝 コントリビューション
+
+このプロジェクトは学習目的で作成されています。  
+フィードバックや提案は大歓迎です！
+
+## 📄 ライセンス
+
+このプロジェクトはポートフォリオ目的で作成されています。
+
+## 👨‍💻 作者
+
+**ふく** - フロントエンド開発者を目指す学習者
+
+---
+
+⭐ このプロジェクトが役に立ったら、スターを押してください！

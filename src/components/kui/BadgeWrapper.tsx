@@ -4,9 +4,6 @@ type BadgeWrapperProps = {
   children: ReactNode;
   badgeContent?: number;
   offset?: {
-    // Optional offset for the badge position
-    // top and right are used to position the badge
-    // relative to the top-right corner of the parent
     top?: string;
     right?: string;
   };
@@ -23,6 +20,7 @@ function BadgeWrapper({ children, badgeContent, offset }: BadgeWrapperProps) {
             top: offset?.top || "0",
             right: offset?.right || "0",
           }}
+          aria-label={`${badgeContent} items`}
         >
           {badgeContent}
         </span>

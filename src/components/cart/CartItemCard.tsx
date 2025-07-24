@@ -1,11 +1,13 @@
-import { CartItem } from "../../types/CartItem";
-import React from "react";
-import { FiMinus, FiPlus, FiTrash2, FiHeart } from "react-icons/fi";
 import { useContext } from "react";
-import { KuiIconButton } from "@/components/kui";
+import { CartItem } from "../../types/CartItem";
+import { FiTrash2, FiHeart } from "react-icons/fi";
+import { KuiIconButton, KuiInputNumber } from "@/components/kui";
 import PriceTag from "../PriceTag";
+import { CartContext } from "@/context/CartContext";
 
 export default function CartItemCart({ item }: { item: CartItem }) {
+  const { updateQuantity, removeFromCart } = useContext(CartContext);
+
   return (
     <div className="flex space-x-4 p-4">
       <img
@@ -32,29 +34,21 @@ export default function CartItemCart({ item }: { item: CartItem }) {
         <div className="flex items-center justify-between mt-2">
           <PriceTag amount={item.product.price} />
           <div className="flex items-center space-x-4">
-            <div className="h-8 flex items-center border rounded-full">
-              <button
-                // onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="px-2 py-2 text-sm font-bold"
-              >
-                <FiMinus />
-              </button>
-              <span className="text-sm w-[4em] text-center">
-                {item.quantity}
-              </span>
-              <button
-                // onClick={() => setQuantity(quantity + 1)}
-                className="px-2 py-2 text-sm font-bold"
-              >
-                <FiPlus />
-              </button>
-            </div>
-            <KuiIconButton variant="text">
+            <KuiInputNumber
+              value={item.quantity}
+              min={1}
+              max={99}
+              onChange={(value) => updateQuantity(item.product.id, value)}
+            />
+            <KuiIconButton
+              variant="text"
+              onClick={() => removeFromCart(item.product.id)}
+            >
               <FiTrash2 />
             </KuiIconButton>
-            <KuiIconButton aria-label="お気に入りに追加" variant="text">
+            {/* <KuiIconButton aria-label="お気に入りに追加" variant="text">
               <FiHeart />
-            </KuiIconButton>
+            </KuiIconButton> */}
           </div>
         </div>
       </div>

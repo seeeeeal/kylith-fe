@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: ["./src/**/*.{html,js,ts,tsx}"],
+  content: ["./src/**/*.{html,js,ts,tsx}", "./index.html"],
   theme: {
     extend: {
       fontFamily: {
@@ -19,6 +19,18 @@ export default {
           danger: "#EF4444",
           border: "#D1D5DB",
           base: "#f3f4f6",
+          gray: {
+            50: "#f9fafb",
+            100: "#f3f4f6",
+            200: "#e5e7eb",
+            300: "#d1d5db",
+            400: "#9ca3af",
+            500: "#6b7280",
+            600: "#4b5563",
+            700: "#374151",
+            800: "#1f2937",
+            900: "#111827",
+          },
         },
       },
       textColor: {
@@ -35,4 +47,5 @@ export default {
       },
     },
   },
+  darkMode: "class",
 } satisfies Config;

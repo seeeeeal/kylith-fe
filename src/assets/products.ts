@@ -7,7 +7,7 @@ const products = [
     connection: "2.4GHz Wireless / Bluetooth 5.1 / USB-C",
     battery: "5000mAh",
     price: 18800,
-    image: "/original-b13d8875c0376830796c926f87a903b8.webp",
+    image: "/75.webp",
   },
   {
     id: "kylith-75-HE",
@@ -17,7 +17,7 @@ const products = [
     connection: "2.4GHz Wireless / Bluetooth 5.1 / USB-C",
     battery: "5000mAh",
     price: 18800,
-    image: "/original-b13d8875c0376830796c926f87a903b8.webp",
+    image: "/75-HE.webp",
   },
   {
     id: "kylith-100",
@@ -27,7 +27,7 @@ const products = [
     connection: "2.4GHz Wireless / Bluetooth 5.1 / USB-C",
     battery: "5000mAh",
     price: 18800,
-    image: "/original-cc17bd86f94ae621760cb3b422667b3a.webp",
+    image: "/100.webp",
   },
   {
     id: "kylith-100-HE",
@@ -37,7 +37,7 @@ const products = [
     connection: "2.4GHz Wireless / Bluetooth 5.1 / USB-C",
     battery: "5000mAh",
     price: 18800,
-    image: "/original-cc17bd86f94ae621760cb3b422667b3a.webp",
+    image: "/100-HE.webp",
   },
 ];
 
