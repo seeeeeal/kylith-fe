@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { FiCheck, FiX, FiAlertCircle, FiInfo } from "react-icons/fi";
 
@@ -21,10 +21,10 @@ type ToastProps = {
 };
 
 const typeStyles = {
-  success: "bg-green-500 text-white",
-  error: "bg-red-500 text-white",
-  warning: "bg-yellow-500 text-white",
-  info: "bg-blue-500 text-white",
+  success: "bg-kui-success-light text-kui-success",
+  error: "bg-kui-error-light text-kui-error",
+  warning: "bg-kui-warning-light text-kui-warning",
+  info: "bg-kui-info-light text-kui-info",
 };
 
 const positionStyles = {
@@ -51,30 +51,59 @@ export default function KuiToast({
   onClose,
   showCloseButton = true,
 }: ToastProps) {
+  const [visible, setVisible] = useState(false);
+  const timerRef = useRef<number | null>(null);
+
+  // Show animation on mount
+  useEffect(() => {
+    setVisible(true);
+    return () => setVisible(false);
+  }, []);
+
+  // Hide animation before unmount
   useEffect(() => {
     if (duration > 0) {
-      const timer = setTimeout(onClose, duration);
-      return () => clearTimeout(timer);
+      timerRef.current = setTimeout(() => {
+        setVisible(false);
+        setTimeout(onClose, 300);
+      }, duration);
+      return () => {
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+        }
+      };
     }
+    return undefined;
   }, [duration, onClose]);
+
+  const handleClose = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    setVisible(false);
+    setTimeout(onClose, 300);
+  };
 
   const Icon = icons[type];
 
   return (
     <div
       className={clsx(
-        "fixed z-50 flex items-center gap-2 px-4 py-3 rounded-lg shadow-lg transition-all duration-300 ease-in-out opacity-100",
+        "fixed z-100 flex items-center gap-2 px-4 py-3 rounded-lg shadow-lg transition-all duration-300 ease-in-out",
         typeStyles[type],
-        positionStyles[position]
+        positionStyles[position],
+        visible
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 translate-y-2 pointer-events-none"
       )}
     >
       <Icon className="w-4 h-4 flex-shrink-0" />
       <span className="text-sm font-medium">{message}</span>
       {showCloseButton && (
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="ml-2 p-1 hover:bg-white/20 rounded transition-colors"
-          aria-label="閉じる"
+          aria-label="Close"
         >
           <FiX className="w-3 h-3" />
         </button>

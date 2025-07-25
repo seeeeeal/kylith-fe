@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import type { Product } from "../types/Product";
 import ProductList from "../components/ProductList";
-import Breadcrumbs from "../components/Breadcrumbs";
+import { KuiBreadcrumbs } from "../components/kui";
 function ProductListPage() {
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -17,7 +17,7 @@ function ProductListPage() {
   return (
     <div className="w-full max-w-screen-xl mx-auto px-8 py-6 ">
       <div>
-        <Breadcrumbs
+        <KuiBreadcrumbs
           items={[
             { label: "ホーム", path: "/" },
             { label: "商品一覧", path: "/products" },

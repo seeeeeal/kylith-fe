@@ -15,7 +15,7 @@ type ButtonProps = {
 };
 
 const baseClass =
-  "inline-flex justify-center items-center transform duration-200 active:scale-95";
+  "inline-flex justify-center items-center transform duration-200";
 const sizeClassMap = {
   small: "h-6 text-xs px-2",
   medium: "h-8 text-sm px-4",
@@ -47,7 +47,8 @@ export default function KuiButton({
         sizeClassMap[size],
         shapeClassMap[shape],
         classMap[variant][color],
-        className
+        className,
+        "disabled:opacity-50 disabled:cursor-not-allowed"
       )}
     >
       {children}

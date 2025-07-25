@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useParams, Link } from "react-router";
 import type { Product as ProductType } from "../types/Product";
 import { CartContext } from "../context/CartContext";
-import Breadcrumbs from "../components/Breadcrumbs";
+import { KuiBreadcrumbs } from "../components/kui";
 import Selector from "../components/Selector";
 import { FiChevronRight, FiHeart } from "react-icons/fi";
 import {
@@ -51,7 +51,7 @@ function Product() {
   }
   return (
     <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-      <Breadcrumbs
+      <KuiBreadcrumbs
         items={[
           { label: t("common.backToProducts"), path: "/" },
           { label: t("nav.keyboard"), path: "/products" },
@@ -66,7 +66,7 @@ function Product() {
           onClick={() => setIsFavorite(!isFavorite)}
           aria-label="お気に入りに追加"
           variant="filled"
-          color={isFavorite ? "danger" : "default"}
+          color={isFavorite ? "error" : "default"}
         >
           {isFavorite ? <FiHeart fill="currentColor" /> : <FiHeart />}
         </KuiIconButton>

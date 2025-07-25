@@ -74,7 +74,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
       onKeyDown={handleKeyDown}
       onWheel={handleWheel}
       className={clsx(
-        "h-8 flex items-center border rounded-full",
+        "h-8 inline-flex items-center border rounded-full",
         disabled && "opacity-50 cursor-not-allowed",
         className
       )}

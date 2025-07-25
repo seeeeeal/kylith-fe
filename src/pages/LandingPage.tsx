@@ -1,6 +1,3 @@
-import React from "react";
-import { Link } from "react-router";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";

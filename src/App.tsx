@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   FiUser,
@@ -17,14 +17,13 @@ import OrderComplete from "./pages/OrderComplete";
 import { CartProvider, CartContext } from "./context/CartContext";
 import Footer from "./components/Footer";
 import { KuiBadgeWrapper, KuiIconButton } from "@/components/kui";
-import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function AppContent() {
   const { cartItems } = useContext(CartContext);
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
-  // カートアイテムの総数を計算
+  // Calculate the total number of cart items
   const cartItemCount = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
@@ -33,13 +32,13 @@ function AppContent() {
   const handleLanguageChange = (language: string) => {
     setCurrentLanguage(language);
     i18n.changeLanguage(language);
-    // LocalStorageに言語設定を保存
-    localStorage.setItem("language", language);
+    // Save language setting to LocalStorage
+    localStorage.setItem("kylith-language", language);
   };
 
-  // 初期化時にLocalStorageから言語設定を読み込み
+  // Load language setting from LocalStorage on initialization
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("language");
+    const savedLanguage = localStorage.getItem("kylith-language");
     if (savedLanguage && savedLanguage !== i18n.language) {
       handleLanguageChange(savedLanguage);
     }
@@ -95,12 +94,6 @@ function AppContent() {
                   </KuiIconButton>
                 </KuiBadgeWrapper>
               </Link>
-
-              {/* 言語切り替え */}
-              <LanguageSwitcher
-                currentLanguage={currentLanguage}
-                onLanguageChange={handleLanguageChange}
-              />
             </nav>
           </div>
         </div>

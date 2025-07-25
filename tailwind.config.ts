@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   content: ["./src/**/*.{html,js,ts,tsx}", "./index.html"],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -14,9 +15,26 @@ export default {
         kui: {
           default: "#1f2937",
           primary: "#3B82F6",
-          success: "#10B981",
-          warning: "#F59E0B",
-          danger: "#EF4444",
+          success: {
+            DEFAULT: "#10B981",
+            light: "#D1FAE5",
+            dark: "#047857",
+          },
+          error: {
+            DEFAULT: "#EF4444",
+            light: "#FEE2E2",
+            dark: "#991B1B",
+          },
+          warning: {
+            DEFAULT: "#F59E0B",
+            light: "#FEF3C7",
+            dark: "#B45309",
+          },
+          info: {
+            DEFAULT: "#3B82F6",
+            light: "#DBEAFE",
+            dark: "#1E40AF",
+          },
           border: "#D1D5DB",
           base: "#f3f4f6",
           gray: {
@@ -47,5 +65,4 @@ export default {
       },
     },
   },
-  darkMode: "class",
 } satisfies Config;

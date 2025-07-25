@@ -1,11 +1,20 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Footer() {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+  const handleLanguageChange = (language: string) => {
+    i18n.changeLanguage(language);
+    localStorage.setItem("language", language);
+  };
+
   return (
     <footer className="bg-kui-base text-sm py-6 px-4 mt-12">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <p>&copy; {new Date().getFullYear()} Kylith. All rights reserved.</p>
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 items-center">
           <a href="#" className="hover:underline">
             プライバシーポリシー
           </a>
@@ -15,6 +24,10 @@ export default function Footer() {
           <a href="#" className="hover:underline">
             お問い合わせ
           </a>
+          <LanguageSwitcher
+            currentLanguage={currentLanguage}
+            onLanguageChange={handleLanguageChange}
+          />
         </div>
       </div>
     </footer>

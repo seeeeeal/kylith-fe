@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Variant, Color } from "./types/Button";
 import classMap from "./utils/buttonClassMap";
 
-type ButtonProps = {
+type IconButtonProps = {
   children: React.ReactNode;
   variant?: Variant;
   disabled?: boolean;
@@ -11,18 +11,22 @@ type ButtonProps = {
   className?: string;
   type?: "button" | "submit" | "reset";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  "aria-label": string; // 必須にする
+  "aria-describedby"?: string;
 };
 
 const baseClass =
-  "flex justify-center items-center rounded-full transform duration-200 active:scale-95";
+  "inline-flex justify-center items-center cursor-pointer rounded-full transform duration-200 active:scale-95 hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed";
 const sizeClassMap = {
-  small: "text-sm p-1",
-  medium: "text-base p-2",
-  large: "text-lg p-3",
+  small: "w-6 h-6 text-xs",
+  medium: "w-8 h-8 text-sm",
+  large: "w-12 h-12 text-base",
 };
 
 export default function KuiIconButton({
   children,
+  "aria-label": ariaLabel,
+  "aria-describedby": ariaDescribedby,
   variant = "solid",
   disabled = false,
   color = "default",
@@ -30,9 +34,11 @@ export default function KuiIconButton({
   className,
   type = "button",
   onClick,
-}: ButtonProps) {
+}: IconButtonProps) {
   return (
     <button
+      aria-label={ariaLabel}
+      aria-describedby={ariaDescribedby}
       type={type}
       onClick={onClick}
       disabled={disabled}

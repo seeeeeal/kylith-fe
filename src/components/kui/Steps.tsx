@@ -15,6 +15,13 @@ const styleMap = {
 };
 
 const KuiSteps: React.FC<StepsProps> = ({ steps, currentStep }) => {
+  if (steps.length === 0) {
+    return null;
+  }
+  if (currentStep < 0 || currentStep >= steps.length) {
+    console.warn(`Invalid currentStep: ${currentStep}`);
+  }
+
   return (
     <div className="flex w-full max-w-3xl mx-auto">
       {steps.map((step, index) => {
@@ -23,13 +30,12 @@ const KuiSteps: React.FC<StepsProps> = ({ steps, currentStep }) => {
         const showLine = index > 0;
 
         return (
-          <div
-            key={index}
-            className="flex justify-center items-center flex-1 relative"
-          >
-            {/* Step */}
+          <div key={index} className="flex justify-center flex-1 relative">
             <div className="flex flex-col items-center">
               <div
+                role="button"
+                aria-label={`Step ${index + 1}: ${step}`}
+                aria-current={isActive ? "step" : undefined}
                 className={clsx(
                   "w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ease-in-out",
                   isActive

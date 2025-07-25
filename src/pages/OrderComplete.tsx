@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, Link } from "react-router";
 import { KuiButton } from "@/components/kui";

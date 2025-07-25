@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { CartContext } from "@/context/CartContext";
 import { KuiButton } from "@/components/kui";
 import PriceTag from "@/components/PriceTag";
-import { FiChevronDown } from "react-icons/fi";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router";
 
