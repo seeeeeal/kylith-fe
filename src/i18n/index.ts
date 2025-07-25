@@ -4,7 +4,7 @@ import { initReactI18next } from "react-i18next";
 // 日本語翻訳
 const ja = {
   nav: {
-    keyboard: "キーボード",
+    keyboards: "キーボード",
     accessories: "アクセサリー",
     support: "サポート",
   },
@@ -122,7 +122,7 @@ const ja = {
 // 英語翻訳
 const en = {
   nav: {
-    keyboard: "KEYBOARD",
+    keyboards: "KEYBOARD",
     accessories: "ACCESSORIES",
     support: "SUPPORT",
   },

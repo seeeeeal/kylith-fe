@@ -1,14 +1,25 @@
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Footer() {
   const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
   const handleLanguageChange = (language: string) => {
+    setCurrentLanguage(language);
     i18n.changeLanguage(language);
-    localStorage.setItem("language", language);
+    // Save language setting to LocalStorage
+    localStorage.setItem("kylith-language", language);
   };
+
+  // Load language setting from LocalStorage on initialization
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("kylith-language");
+    if (savedLanguage && savedLanguage !== i18n.language) {
+      handleLanguageChange(savedLanguage);
+    }
+  }, []);
 
   return (
     <footer className="bg-kui-base text-sm py-6 px-4 mt-12">

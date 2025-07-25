@@ -39,6 +39,12 @@ function Product() {
     filteredSwitches[0]?.type
   );
 
+  // Add state for color and layout selection
+  const [selectedColor, setSelectedColor] = useState(t("product.black"));
+  const [selectedLayout, setSelectedLayout] = useState(
+    t("product.englishLayout")
+  );
+
   if (!product) {
     return (
       <div className="p-4 text-center">
@@ -111,8 +117,8 @@ function Product() {
           <div>
             <Selector
               title={t("product.color")}
-              selected={t("product.black")}
-              onSelect={(v) => console.log(v)}
+              selected={selectedColor}
+              onSelect={(v) => setSelectedColor(v)}
               items={[
                 {
                   value: t("product.black"),
@@ -131,8 +137,8 @@ function Product() {
           <div>
             <Selector
               title={t("product.layout")}
-              selected={t("product.englishLayout")}
-              onSelect={(v) => console.log(v)}
+              selected={selectedLayout}
+              onSelect={(v) => setSelectedLayout(v)}
               items={[
                 {
                   value: t("product.englishLayout"),
@@ -167,7 +173,11 @@ function Product() {
                 size="large"
                 shape="round"
                 onClick={() => {
-                  addToCart(product, quantity);
+                  addToCart(product, quantity, {
+                    switch: selectedSwitch,
+                    color: selectedColor,
+                    layout: selectedLayout,
+                  });
                   setShowToast(true);
                 }}
                 className="flex-1"
