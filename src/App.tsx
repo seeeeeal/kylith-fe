@@ -8,7 +8,7 @@ import {
 } from "react-icons/fi";
 import { BrowserRouter, Routes, Route, Link } from "react-router";
 import LandingPage from "./pages/LandingPage";
-import ProductListPage from "./pages/ProductListPage";
+import KeyboardsPage from "./pages/KeyboardsPage";
 import NotFound from "./pages/NotFound";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
@@ -54,15 +54,18 @@ function AppContent() {
             </Link>
 
             <nav className="ml-8 sm:ml-12 space-x-4 sm:space-x-6 text-xs font-semibold">
-              <Link to="/products" className="inline-flex items-center gap-1">
+              <Link to="/keyboards" className="inline-flex items-center gap-1">
                 {t("nav.keyboard")}
                 <FiChevronDown />
               </Link>
-              <Link to="/products" className="inline-flex items-center gap-1">
+              <Link
+                to="/accessories"
+                className="inline-flex items-center gap-1"
+              >
                 {t("nav.accessories")}
                 <FiChevronDown />
               </Link>
-              <Link to="/products" className="inline-flex items-center gap-1">
+              <Link to="/support" className="inline-flex items-center gap-1">
                 {t("nav.support")}
               </Link>
             </nav>
@@ -80,7 +83,7 @@ function AppContent() {
 
             <nav className="flex items-center space-x-1 sm:space-x-2">
               <Link to="/cart">
-                <KuiIconButton size="medium" variant="text">
+                <KuiIconButton size="medium" variant="text" aria-label="User">
                   <FiUser />
                 </KuiIconButton>
               </Link>
@@ -89,7 +92,7 @@ function AppContent() {
                   badgeContent={cartItemCount}
                   offset={{ top: "0.25rem", right: "0.25rem" }}
                 >
-                  <KuiIconButton size="medium" variant="text">
+                  <KuiIconButton size="medium" variant="text" aria-label="Cart">
                     <FiShoppingCart />
                   </KuiIconButton>
                 </KuiBadgeWrapper>
@@ -102,7 +105,7 @@ function AppContent() {
       <main>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/products" element={<ProductListPage />} />
+          <Route path="/keyboards" element={<KeyboardsPage />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/products/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
