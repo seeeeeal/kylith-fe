@@ -2,38 +2,42 @@ import { ReactNode } from "react";
 
 interface NavigationDropdownProps {
   isOpen: boolean;
+  children: ReactNode;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
-  children: ReactNode;
-  className?: string;
+  onToggle?: () => void;
 }
 
 export default function NavigationDropdown({
   isOpen,
+  children,
   onMouseEnter,
   onMouseLeave,
-  children,
-  className = "",
 }: NavigationDropdownProps) {
-  if (!isOpen) return null;
-
   return (
     <>
-      {/* Dropdown - positioned relative to navigation */}
+      {/* Backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 z-10"
+          style={{ top: "var(--header-height, 80px)" }}
+        />
+      )}
+
+      {/* Dropdown */}
       <div
-        className={`absolute top-full left-0 right-0 bg-white z-40 shadow-lg border-t border-kui-border/20 transform transition-all duration-300 ease-in-out ${
+        className={`absolute top-full left-0 w-full bg-white transition-all duration-150 ease-out transform z-20 ${
           isOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-4 pointer-events-none"
-        } ${className}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation dropdown"
+            ? "opacity-100 translate-y-0 scale-y-100 pointer-events-auto"
+            : "opacity-0 -translate-y-2 scale-y-95 pointer-events-none"
+        }`}
+        style={{
+          transformOrigin: "top",
+        }}
         onMouseEnter={isOpen ? onMouseEnter : undefined}
         onMouseLeave={isOpen ? onMouseLeave : undefined}
       >
-        {/* Content */}
-        <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {children}
         </div>
       </div>

@@ -35,6 +35,13 @@ const switches = [
     tags: ["ソフトリニア", "長時間作業", "リラックス"],
   },
   {
+    type: "slim",
+    name: "Kylith Slim",
+    image: "switch_linear.jpg",
+    desc: "Kylith Slim は、薄型ショートスイッチを採用したスマートなキーボード体験を提供します。  \n素早い入力と高い静音性を両立し、モバイル利用や省スペース環境に最適。  \n「薄くても本格派」を求めるすべてのユーザーへ。",
+    tags: ["薄型", "ショートスイッチ", "静音", "モバイル向け"],
+  },
+  {
     type: "mag",
     name: "Kylith Mag",
     image: "switch_mag.jpg",

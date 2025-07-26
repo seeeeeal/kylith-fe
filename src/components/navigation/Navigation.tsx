@@ -12,10 +12,11 @@ import { CartContext } from "@/context/CartContext";
 import { useDropdown } from "@/hooks/useDropdown";
 import KeyboardDropdown from "./KeyboardDropdown";
 import AccessoryDropdown from "./AccessoryDropdown";
+import clsx from "clsx";
 
 const NAV_ITEMS = [
   { key: "keyboards", path: "/keyboards", hasDropdown: true },
-  { key: "accessories", path: "/accessories", hasDropdown: true },
+  // { key: "accessories", path: "/accessories", hasDropdown: true },
   { key: "support", path: "/support", hasDropdown: false },
 ] as const;
 
@@ -39,12 +40,18 @@ export default function Navigation() {
             <h1 className="text-3xl sm:text-4xl font-bold">Kylith</h1>
           </Link>
 
-          <nav className="ml-8 sm:ml-12 space-x-4 sm:space-x-6 text-xs font-semibold flex items-center">
+          <nav className="ml-8 sm:ml-12 space-x-1 sm:space-x-2 text-xs font-semibold flex items-center">
             {NAV_ITEMS.map(({ key, path, hasDropdown }) => (
-              <div key={key} className="relative group">
+              <div
+                key={key}
+                className={clsx(
+                  "relative group hover:bg-kui-default/5 py-1 px-2 rounded-md transition-colors",
+                  activeDropdown === key && "bg-kui-default/5"
+                )}
+              >
                 <Link
                   to={path}
-                  className="inline-flex items-center gap-1 hover:text-kui-primary transition-colors"
+                  className="inline-flex items-center gap-1 transition-colors"
                   onMouseEnter={
                     hasDropdown
                       ? () => handleDropdownOpen(key as any)
@@ -54,9 +61,10 @@ export default function Navigation() {
                   {t(`nav.${key}`)}
                   {hasDropdown && (
                     <FiChevronDown
-                      className={`transition-transform ${
+                      className={clsx(
+                        "transition-transform",
                         activeDropdown === key ? "rotate-180" : ""
-                      }`}
+                      )}
                     />
                   )}
                 </Link>

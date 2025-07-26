@@ -21,5 +21,4 @@ function ProductCard({ product }: { product: Product }) {
     </Link>
   );
 }
-
 export default ProductCard;

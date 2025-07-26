@@ -1,9 +1,18 @@
+type Series = "basic" | "he" | "compact";
+type Status = "new" | "sale" | "limited";
+
 export interface Product {
   id: string;
   name: string;
+  fullName: string;
+  description: string;
   price: number;
-  description?: string;
-  layout?: string;
-  image?: string;
+  image: string;
+  category: string;
   switches?: string[];
+  colors?: string[];
+  layouts?: string[];
+  status?: Status[];
+  stock?: number;
+  series: Series;
 }
