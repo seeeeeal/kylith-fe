@@ -59,8 +59,8 @@ function Product() {
     <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
       <KuiBreadcrumbs
         items={[
-          { label: t("common.backToProducts"), path: "/" },
-          { label: t("nav.keyboard"), path: "/products" },
+          { label: t("nav.home"), path: "/" },
+          { label: t("nav.keyboards"), path: "/keyboards" },
           { label: product.name },
         ]}
       />

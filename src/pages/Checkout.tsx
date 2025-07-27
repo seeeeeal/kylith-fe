@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CartContext } from "@/context/CartContext";
-import { KuiButton } from "@/components/kui";
+import { KuiButton, KuiSteps } from "@/components/kui";
 import PriceTag from "@/components/PriceTag";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -99,6 +99,10 @@ const Checkout = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
+      <KuiSteps
+        steps={["カート", "注文確認 & 支払い", "注文完了"]}
+        currentStep={1}
+      />
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mt-4 sm:mt-6 lg:mt-8">
         {/* Left: フォーム */}
         <div className="flex-1">

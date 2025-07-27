@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import clsx from "clsx";
 import { TooltipPosition, TooltipVariant, TooltipSize } from "./types/Tooltip";
 
@@ -25,6 +25,7 @@ const variantClasses = {
 };
 
 const sizeClasses = {
+  xsmall: "text-xxs px-1 py-0.5",
   small: "text-xs px-2 py-1",
   medium: "text-sm px-3 py-2",
   large: "text-base px-4 py-3",

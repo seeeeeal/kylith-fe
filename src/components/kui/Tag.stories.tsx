@@ -155,6 +155,7 @@ export const AllVariants: Story = {
 export const AllSizes: Story = {
   render: () => (
     <div className="flex items-center gap-2">
+      <KuiTag size="xsmall">XSmall</KuiTag>
       <KuiTag size="small">Small</KuiTag>
       <KuiTag size="medium">Medium</KuiTag>
       <KuiTag size="large">Large</KuiTag>

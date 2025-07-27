@@ -4,6 +4,7 @@ import { initReactI18next } from "react-i18next";
 // 日本語翻訳
 const ja = {
   nav: {
+    home: "ホーム",
     keyboards: "キーボード",
     accessories: "アクセサリー",
     support: "サポート",
@@ -42,6 +43,12 @@ const ja = {
     japaneseLayout: "日本語配列",
     black: "黒",
     white: "白",
+    new: "新製品",
+    gridView: "グリッド表示",
+    columnView: "カラム表示",
+    showFilter: "フィルターを表示",
+    hideFilter: "フィルターを非表示",
+    filter: "フィルター",
   },
   checkout: {
     shippingInfo: "お届け先情報",
@@ -116,7 +123,7 @@ const ja = {
     error: "エラーが発生しました",
     notFound: "ページが見つかりません",
     backToProducts: "商品一覧に戻る",
-    search: "Kylith 製品を検索",
+    search: "Kylithシリーズ・スイッチで検索",
   },
 };
 
@@ -161,6 +168,11 @@ const en = {
     japaneseLayout: "Japanese Layout",
     black: "Black",
     white: "White",
+    new: "New",
+    gridView: "Grid View",
+    columnView: "Column View",
+    showFilter: "Show Filter",
+    filter: "Filter",
   },
   checkout: {
     shippingInfo: "Shipping Information",
@@ -236,7 +248,7 @@ const en = {
     error: "An error occurred",
     notFound: "Page not found",
     backToProducts: "Back to Products",
-    search: "Search Kylith Products",
+    search: "Search Kylith Series & Switches",
   },
 };
 

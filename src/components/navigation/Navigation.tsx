@@ -79,13 +79,10 @@ export default function Navigation() {
 
         {/* Search & Actions */}
         <div className="flex items-center space-x-2 sm:space-x-4">
-          <div className="bg-kui-default/5 flex items-center rounded px-2 py-1">
-            <input
-              type="text"
-              className="w-20 sm:w-32 text-sm focus:outline-none placeholder:text-xs"
-              placeholder={t("common.search")}
-            />
-            <FiSearch className="text-kylith text-xs" />
+          {/* Search, show search modal after click */}
+          <div className="bg-kui-base border border-2 border-transparent hover:border-kui-primary transition-colors flex justify-end items-center rounded h-6 px-2 w-20 sm:w-36 cursor-pointer">
+            <FiSearch className="text-xs" />
+            {/* TODO: Search modal */}
           </div>
 
           <nav className="flex items-center space-x-1 sm:space-x-2">

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { CartContext } from "../context/CartContext";
 import type { CartItem } from "../types/CartItem";
 import CartItemCard from "../components/cart/CartItemCard";
-import { KuiButton } from "@/components/kui";
+import { KuiButton, KuiSteps } from "@/components/kui";
 import PriceTag from "@/components/PriceTag";
 import { FiTrash2 } from "react-icons/fi";
 import { useNavigate } from "react-router";
@@ -31,6 +31,10 @@ const Cart = () => {
 
   return (
     <div className="w-full max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-8">
+      <KuiSteps
+        steps={["カート", "注文確認 & 支払い", "注文完了"]}
+        currentStep={0}
+      />
       <div className="flex flex-col lg:flex-row justify-between mt-4 sm:mt-6 lg:mt-8 space-y-6 lg:space-y-0 lg:space-x-8">
         {/* カートアイテムセクション */}
         <div className="w-full lg:basis-2/3">

@@ -28,7 +28,7 @@ const meta: Meta<typeof KuiTooltip> = {
     },
     size: {
       control: { type: "select" },
-      options: ["small", "medium", "large"],
+      options: ["xsmall", "small", "medium", "large"],
       description: "Size of the tooltip",
     },
     disabled: {
@@ -116,6 +116,10 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex gap-4 items-center justify-center p-8">
+      <KuiTooltip title="XSmall tooltip" size="xsmall">
+        <KuiButton size="small">XSmall</KuiButton>
+      </KuiTooltip>
+
       <KuiTooltip title="Small tooltip" size="small">
         <KuiButton size="small">Small</KuiButton>
       </KuiTooltip>

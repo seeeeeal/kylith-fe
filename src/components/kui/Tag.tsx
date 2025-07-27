@@ -61,10 +61,10 @@ const colorClassMap: Record<TagColor, Record<TagVariant, string>> = {
 };
 
 const sizeClassMap: Record<TagSize, string> = {
-  xsmall: "px-1 py-0.5 text-xxs rounded-sm",
-  small: "px-2 py-0.5 text-xs rounded-md",
-  medium: "px-3 py-1 text-sm rounded-lg",
-  large: "px-4 py-1.5 text-base rounded-lg",
+  xsmall: "px-1 py-0.5 text-xxs rounded-sm leading-tight",
+  small: "px-2 py-0.5 text-xs rounded-md leading-normal",
+  medium: "px-3 py-1 text-sm rounded-lg leading-normal",
+  large: "px-4 py-1.5 text-base rounded-lg leading-relaxed",
 };
 
 export default function Tag({

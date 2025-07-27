@@ -11,7 +11,7 @@ export const series = [
   },
   {
     id: "he",
-    name: "HE Series (磁気スイッチ)",
+    name: "HE Series",
     description: "HE Series (磁気スイッチ)",
     status: "new",
   },

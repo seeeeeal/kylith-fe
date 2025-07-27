@@ -16,7 +16,7 @@ type IconButtonProps = {
 };
 
 const baseClass =
-  "inline-flex justify-center items-center cursor-pointer rounded-full transform duration-200 active:scale-95 hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed";
+  "inline-flex justify-center items-center cursor-pointer rounded-full transform duration-200 hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed";
 const sizeClassMap = {
   small: "w-6 h-6 text-xs",
   medium: "w-8 h-8 text-sm",

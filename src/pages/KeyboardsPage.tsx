@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-// import axios from "axios";
 import type { Product } from "../types/Product";
-import ProductList from "../components/ProductList";
+import ProductList from "../components/product/List";
 import { KuiBreadcrumbs, KuiButton } from "../components/kui";
 import products from "../assets/products";
+import { useTranslation } from "react-i18next";
+// import axios from "axios";
 
 function KeyboardsPage() {
+  const { t } = useTranslation();
   const [productsData, setProductsData] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -21,8 +23,8 @@ function KeyboardsPage() {
       <div>
         <KuiBreadcrumbs
           items={[
-            { label: "ホーム", path: "/" },
-            { label: "キーボード", path: "/keyboards" },
+            { label: t("nav.home"), path: "/" },
+            { label: t("nav.keyboards"), path: "/keyboards" },
           ]}
         />
 
@@ -30,7 +32,7 @@ function KeyboardsPage() {
           <ProductList products={productsData}>
             {/* Custom PR */}
             <div
-              className={`relative flex items-center w-full bg-[url(/HE.jpg)] bg-center bg-cover p-4 sm:p-6 lg:p-8 rounded-lg overflow-hidden mb-4 lg:mb-6`}
+              className={`relative flex items-center w-full bg-[url(/HE.jpg)] bg-center bg-cover p-4 sm:p-6 lg:p-8 rounded-lg overflow-hidden`}
             >
               <div className="absolute inset-0 bg-black opacity-40 z-0" />
               <div className="relative z-10 text-white p-2 sm:p-4">
