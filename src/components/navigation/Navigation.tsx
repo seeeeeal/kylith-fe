@@ -23,8 +23,12 @@ const NAV_ITEMS = [
 export default function Navigation() {
   const { t } = useTranslation();
   const { cartItems } = useContext(CartContext);
-  const { activeDropdown, handleDropdownOpen, handleDropdownClose } =
-    useDropdown();
+  const {
+    activeDropdown,
+    handleDropdownOpen,
+    handleDropdownClose,
+    closeAllDropdowns,
+  } = useDropdown();
 
   const cartItemCount = cartItems.reduce(
     (total, item) => total + item.quantity,
@@ -55,7 +59,7 @@ export default function Navigation() {
                   onMouseEnter={
                     hasDropdown
                       ? () => handleDropdownOpen(key as any)
-                      : undefined
+                      : () => closeAllDropdowns()
                   }
                 >
                   {t(`nav.${key}`)}
@@ -108,6 +112,7 @@ export default function Navigation() {
       <KeyboardDropdown
         isOpen={activeDropdown === "keyboards"}
         onMouseLeave={() => handleDropdownClose("keyboards")}
+        closeAllDropdowns={closeAllDropdowns}
       />
       <AccessoryDropdown
         isOpen={activeDropdown === "accessories"}

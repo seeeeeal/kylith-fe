@@ -7,11 +7,13 @@ import { series } from "../../assets/series";
 interface KeyboardDropdownProps {
   isOpen: boolean;
   onMouseLeave: () => void;
+  closeAllDropdowns: () => void;
 }
 
 export default function KeyboardDropdown({
   isOpen,
   onMouseLeave,
+  closeAllDropdowns,
 }: KeyboardDropdownProps) {
   return (
     <NavigationDropdown isOpen={isOpen} onMouseLeave={onMouseLeave}>
@@ -55,6 +57,7 @@ export default function KeyboardDropdown({
                 <Link
                   to={`/keyboards?series=${series.id}`}
                   className="block text-xs hover:text-kui-primary transition-colors font-semibold flex items-center gap-2"
+                  onClick={() => closeAllDropdowns()}
                 >
                   {series.description}
                   {series.status === "new" && (
@@ -70,6 +73,7 @@ export default function KeyboardDropdown({
                       to={`/products/${product.id}`}
                       key={product.id}
                       className="block hover:text-kui-primary transition-colors"
+                      onClick={() => closeAllDropdowns()}
                     >
                       {product.name}
                     </Link>
