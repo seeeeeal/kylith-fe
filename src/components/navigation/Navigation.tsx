@@ -7,7 +7,7 @@ import {
   FiUser,
   FiShoppingCart,
 } from "react-icons/fi";
-import { KuiIconButton, KuiBadgeWrapper } from "@/components/kui";
+import { KuiIconButton, KuiBadgeWrapper, KuiTooltip } from "@/components/kui";
 import { CartContext } from "@/context/CartContext";
 import { useDropdown } from "@/hooks/useDropdown";
 import KeyboardDropdown from "./KeyboardDropdown";
@@ -82,7 +82,7 @@ export default function Navigation() {
           <div className="bg-kui-default/5 flex items-center rounded px-2 py-1">
             <input
               type="text"
-              className="w-20 sm:w-32 text-sm focus:outline-none placeholder:text-xxs"
+              className="w-20 sm:w-32 text-sm focus:outline-none placeholder:text-xs"
               placeholder={t("common.search")}
             />
             <FiSearch className="text-kylith text-xs" />
@@ -90,18 +90,32 @@ export default function Navigation() {
 
           <nav className="flex items-center space-x-1 sm:space-x-2">
             <Link to="/cart">
-              <KuiIconButton size="medium" variant="text" aria-label="User">
-                <FiUser />
-              </KuiIconButton>
+              <KuiTooltip
+                title="ログイン"
+                position="bottom"
+                variant="dark"
+                size="small"
+              >
+                <KuiIconButton size="medium" variant="text" aria-label="User">
+                  <FiUser />
+                </KuiIconButton>
+              </KuiTooltip>
             </Link>
             <Link to="/cart">
               <KuiBadgeWrapper
                 badgeContent={cartItemCount}
                 offset={{ top: "0.25rem", right: "0.25rem" }}
               >
-                <KuiIconButton size="medium" variant="text" aria-label="Cart">
-                  <FiShoppingCart />
-                </KuiIconButton>
+                <KuiTooltip
+                  title="カート"
+                  position="bottom"
+                  variant="dark"
+                  size="small"
+                >
+                  <KuiIconButton size="medium" variant="text" aria-label="Cart">
+                    <FiShoppingCart />
+                  </KuiIconButton>
+                </KuiTooltip>
               </KuiBadgeWrapper>
             </Link>
           </nav>
