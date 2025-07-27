@@ -82,10 +82,10 @@ export default function Navigation() {
           <div className="bg-kui-default/5 flex items-center rounded px-2 py-1">
             <input
               type="text"
-              className="w-20 sm:w-32 text-sm"
+              className="w-20 sm:w-32 text-sm focus:outline-none placeholder:text-xxs"
               placeholder={t("common.search")}
             />
-            <FiSearch className="text-kylith text-base" />
+            <FiSearch className="text-kylith text-xs" />
           </div>
 
           <nav className="flex items-center space-x-1 sm:space-x-2">

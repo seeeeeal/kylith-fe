@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import NavigationDropdown from "./NavigationDropdown";
-import { KuiButton, KuiTag } from "../kui";
+import { KuiTag } from "../kui";
 import products from "../../assets/products";
 import { series } from "../../assets/series";
+import { FiChevronRight } from "react-icons/fi";
 
 interface KeyboardDropdownProps {
   isOpen: boolean;
@@ -38,11 +39,10 @@ export default function KeyboardDropdown({
               </p>
               <Link
                 to="/products/kylith-75-HE"
-                className="text-sm text-kui-primary"
+                className="text-xs text-kui-primary flex items-center gap-1 hover:underline"
               >
-                <KuiButton variant="filled" size="small">
-                  詳しく見る
-                </KuiButton>
+                詳しく見る
+                <FiChevronRight />
               </Link>
             </div>
           </div>

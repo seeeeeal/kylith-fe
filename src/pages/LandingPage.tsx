@@ -10,8 +10,12 @@ import PriceTag from "@/components/PriceTag";
 export default function LandingPage() {
   return (
     <>
-      {/* ヒーローセクション - レスポンシブ対応 */}
       <section className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] flex items-center justify-center bg-black text-white">
+        <img
+          src="/HE.jpg"
+          alt="Kylith"
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-50"
+        />
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
             Where performance meets style.
@@ -30,7 +34,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* 商品セクション - レスポンシブ対応 */}
       <section className="p-4 sm:p-6 lg:p-8">
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
           Products
@@ -75,7 +78,6 @@ export default function LandingPage() {
         </Swiper>
       </section>
 
-      {/* 機能セクション - レスポンシブ対応 */}
       <section className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">

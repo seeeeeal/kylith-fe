@@ -116,6 +116,7 @@ const ja = {
     error: "エラーが発生しました",
     notFound: "ページが見つかりません",
     backToProducts: "商品一覧に戻る",
+    search: "Kylith 製品を検索",
   },
 };
 
@@ -235,6 +236,7 @@ const en = {
     error: "An error occurred",
     notFound: "Page not found",
     backToProducts: "Back to Products",
+    search: "Search Kylith Products",
   },
 };
 
