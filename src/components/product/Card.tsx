@@ -17,7 +17,7 @@ function ProductCard({ product }: { product: Product }) {
     >
       <img
         src={product.image}
-        alt={product.name}
+        alt={product.fullName}
         className="w-full h-auto rounded mb-4"
       />
       <div className="flex items-center gap-1 mb-1">
@@ -30,10 +30,10 @@ function ProductCard({ product }: { product: Product }) {
           {seriesData?.description}
         </KuiTag>
       </div>
-      <h2 className="text-base font-semibold leading-relaxed mb-0.5">
-        {product.name}
+      <h2 className="text-base font-semibold leading-normal mb-0.5">
+        {product.fullName}
       </h2>
-      <PriceTag amount={product.price} size="small" />
+      <PriceTag amount={product.price} size="medium" />
     </Link>
   );
 }

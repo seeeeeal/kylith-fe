@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { CartContext } from "../context/CartContext";
 import type { CartItem } from "../types/CartItem";
-import CartItemCard from "../components/cart/CartItemCard";
+import Item from "../components/cart/Item";
 import { KuiButton, KuiSteps } from "@/components/kui";
 import PriceTag from "@/components/PriceTag";
 import { FiTrash2 } from "react-icons/fi";
@@ -67,7 +67,7 @@ const Cart = () => {
           <ul className="mt-4">
             {cartItems.map((item: CartItem) => (
               <li key={item.product.id} className="border-b border-kui-border">
-                <CartItemCard item={item} />
+                <Item item={item} />
               </li>
             ))}
           </ul>

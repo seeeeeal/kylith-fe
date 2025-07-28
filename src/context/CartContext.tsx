@@ -12,6 +12,13 @@ interface CartContextType {
   updateQuantity: (productId: string, quantity: number) => void;
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
+  recentlyAddedItem:
+    | {
+        product: Product;
+        quantity: number;
+        options?: { switch?: string; color?: string; layout?: string };
+      }
+    | undefined;
 }
 
 export const CartContext = createContext<CartContextType>({
@@ -20,10 +27,14 @@ export const CartContext = createContext<CartContextType>({
   updateQuantity: () => {},
   removeFromCart: () => {},
   clearCart: () => {},
-});
+  recentlyAddedItem: undefined,
+} as CartContextType);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [recentlyAddedItem, setRecentlyAddedItem] = useState<
+    CartItem | undefined
+  >(undefined);
 
   // Load cart from LocalStorage
   useEffect(() => {
@@ -48,6 +59,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     quantity: number,
     options?: { switch?: string; color?: string; layout?: string }
   ) => {
+    // Set the recently added item to trigger the popup
+    const recentlyAddedItem = {
+      product,
+      quantity,
+      options,
+    };
+    setRecentlyAddedItem(recentlyAddedItem);
+
     setCartItems((prevItems) => {
       // Check if the same product with the same options already exists
       const existingItem = prevItems.find(
@@ -111,6 +130,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         updateQuantity,
         removeFromCart,
         clearCart,
+        recentlyAddedItem,
       }}
     >
       {children}

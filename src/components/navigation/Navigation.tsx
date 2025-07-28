@@ -13,6 +13,7 @@ import { useDropdown } from "@/hooks/useDropdown";
 import KeyboardDropdown from "./KeyboardDropdown";
 import AccessoryDropdown from "./AccessoryDropdown";
 import clsx from "clsx";
+import CartPopup from "../cart/Popup";
 
 const NAV_ITEMS = [
   { key: "keyboards", path: "/keyboards", hasDropdown: true },
@@ -80,7 +81,7 @@ export default function Navigation() {
         {/* Search & Actions */}
         <div className="flex items-center space-x-2 sm:space-x-4">
           {/* Search, show search modal after click */}
-          <div className="bg-kui-base border border-2 border-transparent hover:border-kui-primary transition-colors flex justify-end items-center rounded h-6 px-2 w-20 sm:w-36 cursor-pointer">
+          <div className=" bg-kui-base border border-2 border-transparent hover:border-kui-primary transition-colors flex justify-end items-center rounded h-6 px-2 w-20 sm:w-36 cursor-pointer">
             <FiSearch className="text-xs" />
             {/* TODO: Search modal */}
           </div>
@@ -98,23 +99,30 @@ export default function Navigation() {
                 </KuiIconButton>
               </KuiTooltip>
             </Link>
-            <Link to="/cart">
-              <KuiBadgeWrapper
-                badgeContent={cartItemCount}
-                offset={{ top: "0.25rem", right: "0.25rem" }}
-              >
-                <KuiTooltip
-                  title="カート"
-                  position="bottom"
-                  variant="dark"
-                  size="small"
+            <div className="relative">
+              <Link to="/cart">
+                <KuiBadgeWrapper
+                  badgeContent={cartItemCount}
+                  offset={{ top: "0.25rem", right: "0.25rem" }}
                 >
-                  <KuiIconButton size="medium" variant="text" aria-label="Cart">
-                    <FiShoppingCart />
-                  </KuiIconButton>
-                </KuiTooltip>
-              </KuiBadgeWrapper>
-            </Link>
+                  <KuiTooltip
+                    title="カート"
+                    position="bottom"
+                    variant="dark"
+                    size="small"
+                  >
+                    <KuiIconButton
+                      size="medium"
+                      variant="text"
+                      aria-label="Cart"
+                    >
+                      <FiShoppingCart />
+                    </KuiIconButton>
+                  </KuiTooltip>
+                </KuiBadgeWrapper>
+              </Link>
+              <CartPopup />
+            </div>
           </nav>
         </div>
       </div>

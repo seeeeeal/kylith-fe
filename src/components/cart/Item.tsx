@@ -1,16 +1,16 @@
 import { useContext, useCallback } from "react";
 import { CartItem } from "../../types/CartItem";
-import { FiTrash2, FiHeart } from "react-icons/fi";
+import { FiTrash2 } from "react-icons/fi";
 import { KuiIconButton, KuiInputNumber } from "@/components/kui";
 import PriceTag from "../PriceTag";
 import { CartContext } from "@/context/CartContext";
 
-type CartItemCardProps = {
+type ItemProps = {
   item: CartItem;
   className?: string;
 };
 
-export default function CartItemCard({ item, className }: CartItemCardProps) {
+export default function Item({ item, className }: ItemProps) {
   const { updateQuantity, removeFromCart } = useContext(CartContext);
 
   const handleQuantityChange = useCallback(

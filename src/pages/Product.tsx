@@ -1,31 +1,25 @@
 import { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, Link } from "react-router";
-import type { Product as ProductType } from "../types/Product";
 import { CartContext } from "../context/CartContext";
 import { KuiBreadcrumbs } from "../components/kui";
 import Selector from "../components/Selector";
 import { FiChevronRight, FiHeart } from "react-icons/fi";
-import {
-  KuiIconButton,
-  KuiButton,
-  KuiInputNumber,
-  KuiToast,
-} from "@/components/kui";
+import { KuiIconButton, KuiButton, KuiInputNumber } from "@/components/kui";
 // mock data.
 import products from "../assets/products";
 import switches from "../assets/switches";
 import PriceTag from "@/components/PriceTag";
+import type { Product } from "../types/Product";
 
 function Product() {
   const { id } = useParams();
   const { t } = useTranslation();
   const { addToCart } = useContext(CartContext);
-  const product: ProductType | undefined = products.find((p) => p.id === id);
+  const product = products.find((p) => p.id === id);
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [showToast, setShowToast] = useState(false);
 
   const filteredSwitches = switches.filter((sw) => {
     if (product?.switches) {
@@ -61,12 +55,12 @@ function Product() {
         items={[
           { label: t("nav.home"), path: "/" },
           { label: t("nav.keyboards"), path: "/keyboards" },
-          { label: product.name },
+          { label: product.fullName },
         ]}
       />
 
       <div className="mt-4 flex items-center justify-between">
-        <h2 className="text-xl sm:text-2xl font-bold">{product.name}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold">{product.fullName}</h2>
 
         <KuiIconButton
           onClick={() => setIsFavorite(!isFavorite)}
@@ -173,27 +167,17 @@ function Product() {
                 size="large"
                 shape="round"
                 onClick={() => {
-                  addToCart(product, quantity, {
+                  addToCart(product as Product, quantity, {
                     switch: selectedSwitch,
                     color: selectedColor,
                     layout: selectedLayout,
                   });
-                  setShowToast(true);
                 }}
                 className="flex-1"
               >
                 {t("cart.addToCart")}
               </KuiButton>
             </div>
-
-            {showToast && (
-              <KuiToast
-                message={t("cart.addedToCart")}
-                type="success"
-                position="top-center"
-                onClose={() => setShowToast(false)}
-              />
-            )}
           </div>
         </div>
       </div>

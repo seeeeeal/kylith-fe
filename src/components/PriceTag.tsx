@@ -2,12 +2,17 @@ import clsx from "clsx";
 
 type PriceProps = {
   amount: number | string;
-  size?: "small" | "medium" | "large";
+  size?: "xsmall" | "small" | "medium" | "large";
   taxIncluded?: boolean;
   emphasis?: boolean;
 };
 
 const sizeClassMap = {
+  xsmall: {
+    currency: "text-xs",
+    amount: "text-xs",
+    taxIncluded: "text-xxs",
+  },
   small: {
     currency: "text-sm",
     amount: "text-sm",
