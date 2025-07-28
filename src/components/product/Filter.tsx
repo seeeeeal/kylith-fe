@@ -8,6 +8,7 @@ import {
 import { FiFilter, FiRotateCcw, FiX } from "react-icons/fi";
 import type { Product } from "@/types/Product";
 import { series } from "@/assets/series";
+import clsx from "clsx";
 
 type FilterProps = {
   products: Product[];
@@ -149,8 +150,8 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
           {/* Price Filter */}
           <div>
             <h4 className="text-xs font-medium mb-2">価格範囲</h4>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs text-gray-600">
+            <div>
+              <div className="flex items-center justify-between text-xs text-kui-secondary">
                 <span>¥{priceRange[0].toLocaleString()}</span>
                 <span>¥{priceRange[1].toLocaleString()}</span>
               </div>
@@ -163,7 +164,11 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
                 onChange={(e) =>
                   setPriceRange([priceRange[0], parseInt(e.target.value)])
                 }
-                className="w-full"
+                className={clsx(
+                  "w-full h-1 bg-kui-border rounded-lg appearance-none cursor-pointer",
+                  "[&::-webkit-slider-thumb]:bg-kui-default [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none",
+                  "[&::-moz-range-thumb]:bg-kui-default [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:h-3 [&::-moz-range-thumb]:w-3 [&::-moz-range-thumb]:appearance-none"
+                )}
               />
             </div>
           </div>

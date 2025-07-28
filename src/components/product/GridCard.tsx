@@ -5,7 +5,7 @@ import { KuiTag } from "@/components/kui";
 import { series } from "@/assets/series";
 import { useTranslation } from "react-i18next";
 
-function ProductCard({ product }: { product: Product }) {
+function GridCard({ product }: { product: Product }) {
   const { t } = useTranslation();
   const seriesData = series.find((s) => s.id === product.series);
   const isNew = product.status?.includes("new");
@@ -37,4 +37,4 @@ function ProductCard({ product }: { product: Product }) {
     </Link>
   );
 }
-export default ProductCard;
+export default GridCard;

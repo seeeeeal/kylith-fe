@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from "react";
-import ProductCard from "./Card";
-import Filter from "./Filter";
 import type { Product } from "@/types/Product";
 import clsx from "clsx";
 import { KuiButton, KuiIconButton, KuiTooltip } from "../kui";
 import { FiColumns, FiFilter, FiGrid } from "react-icons/fi";
 import { t } from "i18next";
+import Filter from "./Filter";
+import GridCard from "./GridCard";
+import ColumnCard from "./ColumnCard";
 
 type FilterConfig = {
   type: "switch" | "price" | "series";
@@ -126,7 +127,11 @@ function ProductList({ products, children }: ProductListProps) {
           >
             {filteredProducts.map((product) => (
               <div key={product.id}>
-                <ProductCard product={product} />
+                {viewType === "grid" ? (
+                  <GridCard product={product} />
+                ) : (
+                  <ColumnCard product={product} />
+                )}
               </div>
             ))}
             {filteredProducts.length === 0 && (
