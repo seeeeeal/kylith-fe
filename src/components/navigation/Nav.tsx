@@ -21,7 +21,7 @@ const NAV_ITEMS = [
   { key: "support", path: "/support", hasDropdown: false },
 ] as const;
 
-export default function Navigation() {
+export default function Nav() {
   const { t } = useTranslation();
   const { cartItems } = useContext(CartContext);
   const {

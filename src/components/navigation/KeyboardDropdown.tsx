@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavigationDropdown from "./NavigationDropdown";
+import NavDropdown from "./NavDropdown";
 import { KuiTag } from "../kui";
 import products from "../../assets/products";
 import { series } from "../../assets/series";
@@ -17,7 +17,7 @@ export default function KeyboardDropdown({
   closeAllDropdowns,
 }: KeyboardDropdownProps) {
   return (
-    <NavigationDropdown isOpen={isOpen} onMouseLeave={onMouseLeave}>
+    <NavDropdown isOpen={isOpen} onMouseLeave={onMouseLeave}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-xs">
         <div className="col-span-1">
           <h3 className="text-base font-semibold mb-4 text-kui-default">
@@ -83,6 +83,6 @@ export default function KeyboardDropdown({
           </div>
         </div>
       </div>
-    </NavigationDropdown>
+    </NavDropdown>
   );
 }

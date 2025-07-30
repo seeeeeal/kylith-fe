@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavigationDropdown from "./NavigationDropdown";
+import NavDropdown from "./NavDropdown";
 
 interface AccessoryDropdownProps {
   isOpen: boolean;
@@ -11,7 +11,7 @@ export default function AccessoryDropdown({
   onMouseLeave,
 }: AccessoryDropdownProps) {
   return (
-    <NavigationDropdown isOpen={isOpen} onMouseLeave={onMouseLeave}>
+    <NavDropdown isOpen={isOpen} onMouseLeave={onMouseLeave}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div>
           <h3 className="text-lg font-semibold mb-4 text-kui-default">
@@ -83,6 +83,6 @@ export default function AccessoryDropdown({
           </div>
         </div>
       </div>
-    </NavigationDropdown>
+    </NavDropdown>
   );
 }

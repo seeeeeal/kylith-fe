@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router";
 import { CartProvider } from "@/context/CartContext";
-import Navigation from "@/components/navigation/Navigation";
-import CheckoutNavigation from "@/components/navigation/CheckoutNavigation";
+import Nav from "@/components/navigation/Nav";
+import SimpleNav from "@/components/navigation/SimpleNav";
 import LandingPage from "@/pages/LandingPage";
 import KeyboardsPage from "@/pages/KeyboardsPage";
 import NotFound from "@/pages/NotFound";
@@ -16,9 +16,9 @@ function AppContent() {
   const location = useLocation();
 
   // Checkout and Order Complete pages use a simple navigation bar and hide footer
-  const isCheckoutPage =
-    location.pathname === "/checkout" ||
-    location.pathname === "/order-complete";
+  const isCheckoutPage = ["checkout", "order-complete"].includes(
+    location.pathname
+  );
 
   // Reset scroll position when route changes
   useEffect(() => {
@@ -27,7 +27,7 @@ function AppContent() {
 
   return !isCheckoutPage ? (
     <div className="bg-white text-kui-default flex flex-col min-h-screen">
-      <Navigation />
+      <Nav />
 
       <main className="flex-1 min-h-0">
         <Routes>
@@ -43,7 +43,7 @@ function AppContent() {
     </div>
   ) : (
     <div className="bg-white text-kui-default">
-      <CheckoutNavigation />
+      <SimpleNav />
 
       <main className="flex-1 min-h-0">
         <Routes>

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-interface NavigationDropdownProps {
+interface NavDropdownProps {
   isOpen: boolean;
   children: ReactNode;
   onMouseEnter?: () => void;
@@ -8,12 +8,12 @@ interface NavigationDropdownProps {
   onToggle?: () => void;
 }
 
-export default function NavigationDropdown({
+export default function NavDropdown({
   isOpen,
   children,
   onMouseEnter,
   onMouseLeave,
-}: NavigationDropdownProps) {
+}: NavDropdownProps) {
   return (
     <>
       {/* Backdrop */}
