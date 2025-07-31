@@ -21,6 +21,8 @@ type ProductListProps = {
   children?: React.ReactNode;
 };
 
+type ViewType = "grid" | "column";
+
 function ProductList({ products, children }: ProductListProps) {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
@@ -31,14 +33,14 @@ function ProductList({ products, children }: ProductListProps) {
     setShowFilter((prev) => !prev);
   }, []);
 
-  const toggleViewType = (viewType: "grid" | "column") => {
+  const toggleViewType = (viewType: ViewType) => {
     setViewType(viewType);
   };
 
   return (
     <>
       <div className="flex justify-between items-center mb-4">
-        {/* Filter */}
+        {/* filter */}
         <div className="flex items-center gap-1">
           <KuiTooltip
             title={
@@ -63,7 +65,7 @@ function ProductList({ products, children }: ProductListProps) {
           </KuiTooltip>
         </div>
 
-        {/* Column view or Grid view */}
+        {/* column view or grid view */}
         <div className="flex gap-2">
           <KuiTooltip
             title={t("product.gridView")}
@@ -105,19 +107,19 @@ function ProductList({ products, children }: ProductListProps) {
           !showFilter && "lg:flex-col"
         )}
       >
-        {/* Filter */}
+        {/* filter */}
         <Filter
           className={clsx(!showFilter && "hidden")}
           products={products}
           onFilterChange={setFilteredProducts}
         />
 
-        {/* Product List */}
+        {/* product list */}
         <div className="flex-1 min-w-0">
-          {/* Custom PR */}
+          {/* custom pr */}
           {children && <div className="mb-3 lg:mb-4">{children}</div>}
 
-          {/* Product Grid */}
+          {/* product grid */}
           <div
             className={clsx(
               "grid gap-3 sm:gap-4",

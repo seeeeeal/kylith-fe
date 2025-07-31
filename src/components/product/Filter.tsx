@@ -16,7 +16,7 @@ type FilterProps = {
   className?: string;
 };
 
-// 共通のフィルターセクションコンポーネント
+// common filter section component
 const FilterSection = ({
   title,
   options,
@@ -50,7 +50,7 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 20000]);
   const [showFilters, setShowFilters] = useState(false);
 
-  // 共通のトグル関数
+  // common toggle function
   const createToggleHandler = (
     setter: React.Dispatch<React.SetStateAction<string[]>>
   ) => {
@@ -65,7 +65,7 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
 
   const switches = [...new Set(products.flatMap((p) => p.switches || []))];
 
-  // Filter products
+  // filter products
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       if (selectedSwitches.length > 0 && product.switches) {
@@ -93,7 +93,7 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
 
   return (
     <div className={`w-full lg:w-64 lg:flex-shrink-0 ${className || ""}`}>
-      {/* Mobile Filter Button */}
+      {/* mobile filter button */}
       <div className="lg:hidden mb-4">
         <KuiButton
           onClick={() => setShowFilters(!showFilters)}
@@ -106,7 +106,7 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
         </KuiButton>
       </div>
 
-      {/* Filter */}
+      {/* filter */}
       <div
         className={`lg:block ${
           showFilters ? "block" : "hidden"
@@ -147,7 +147,7 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
             onToggle={createToggleHandler(setSelectedSeries)}
           />
 
-          {/* Price Filter */}
+          {/* price filter */}
           <div>
             <h4 className="text-xs font-medium mb-2">価格範囲</h4>
             <div>
