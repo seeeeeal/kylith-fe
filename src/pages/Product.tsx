@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router";
 import { CartContext } from "../context/CartContext";
 import { KuiBreadcrumbs } from "../components/kui";
 import Selector from "../components/Selector";
-import { FiChevronRight, FiHeart } from "react-icons/fi";
+import { FiChevronRight, FiHeart, FiTruck } from "react-icons/fi";
 import { KuiIconButton, KuiButton, KuiInputNumber } from "@/components/kui";
 // mock data.
 import products from "../assets/products";
@@ -85,9 +85,7 @@ function Product() {
         {/* 商品詳細 */}
         <div className="flex flex-col space-y-4 w-full lg:basis-1/2">
           <PriceTag amount={product.price} size="large" />
-
           <hr className="border-kui-border" />
-
           <div>
             <Selector
               title={t("product.switch")}
@@ -145,7 +143,6 @@ function Product() {
               ]}
             />
           </div>
-
           <div>
             <div className="inline-flex items-center gap-1 text-xs text-green-600 bg-green-100 px-2 py-0.5 rounded-full mb-4">
               <span className="w-2 h-2 bg-green-500 rounded-full"></span>{" "}
@@ -177,6 +174,19 @@ function Product() {
               >
                 {t("cart.addToCart")}
               </KuiButton>
+            </div>
+          </div>
+
+          <hr className="border-kui-border" />
+
+          <div className="flex flex-col gap-2">
+            <p className="text-xs leading-relaxed text-kui-secondary">
+              {product.description}
+            </p>
+
+            <div className="bg-kui-base text-kui-secondary rounded-lg p-4 flex items-center gap-2">
+              <FiTruck className="w-4 h-4" />
+              <span className="text-xs">日本全国送料無料です。</span>
             </div>
           </div>
         </div>

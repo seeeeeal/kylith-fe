@@ -16,7 +16,7 @@ function AppContent() {
   const location = useLocation();
 
   // Checkout and Order Complete pages use a simple navigation bar and hide footer
-  const isCheckoutPage = ["checkout", "order-complete"].includes(
+  const isCheckoutPage = ["/checkout", "/order-complete"].includes(
     location.pathname
   );
 
