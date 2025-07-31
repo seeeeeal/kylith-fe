@@ -9,7 +9,7 @@ import {
 } from "react-icons/fi";
 import { KuiIconButton, KuiBadgeWrapper, KuiTooltip } from "@/components/kui";
 import { CartContext } from "@/context/CartContext";
-import { useDropdown } from "@/hooks/useDropdown";
+import { useDropdown } from "./useDropdown";
 import KeyboardDropdown from "./KeyboardDropdown";
 import AccessoryDropdown from "./AccessoryDropdown";
 import clsx from "clsx";
