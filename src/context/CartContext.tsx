@@ -9,9 +9,12 @@ interface CartContextType {
     quantity: number,
     options?: { switch?: string; color?: string; layout?: string }
   ) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  removeFromCart: (productId: string) => void;
+  updateQuantity: (itemId: string, quantity: number) => void;
+  removeFromCart: (itemId: string) => void;
   clearCart: () => void;
+  toggleItemChecked: (itemId: string) => void;
+  toggleAllItems: (checked: boolean) => void;
+  getCheckedItems: () => CartItem[];
   recentlyAddedItem:
     | {
         product: Product;
@@ -27,6 +30,9 @@ export const CartContext = createContext<CartContextType>({
   updateQuantity: () => {},
   removeFromCart: () => {},
   clearCart: () => {},
+  toggleItemChecked: () => {},
+  toggleAllItems: () => {},
+  getCheckedItems: () => [],
   recentlyAddedItem: undefined,
 } as CartContextType);
 
@@ -35,35 +41,64 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [recentlyAddedItem, setRecentlyAddedItem] = useState<
     CartItem | undefined
   >(undefined);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Load cart from LocalStorage
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
       try {
-        setCartItems(JSON.parse(savedCart));
+        const parsedCart = JSON.parse(savedCart);
+        // Migrate existing cart items to include unique IDs
+        const migratedCart = parsedCart.map((item: any) => {
+          if (!item.id) {
+            // Generate unique ID for existing items
+            const uniqueId = `${item.product.id}-${item.switch || "default"}-${
+              item.color || "default"
+            }-${item.layout || "default"}`;
+            return {
+              ...item,
+              id: uniqueId,
+              checked: item.checked !== undefined ? item.checked : true,
+            };
+          }
+          return item;
+        });
+        setCartItems(migratedCart);
       } catch (error) {
         console.error("Failed to load cart:", error);
         setCartItems([]);
       }
     }
+    setIsInitialized(true);
   }, []);
 
   // Save cart to LocalStorage
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (isInitialized) {
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+  }, [cartItems, isInitialized]);
 
   const addToCart = (
     product: Product,
     quantity: number,
     options?: { switch?: string; color?: string; layout?: string }
   ) => {
+    // Generate unique ID for the cart item
+    const uniqueId = `${product.id}-${options?.switch || "default"}-${
+      options?.color || "default"
+    }-${options?.layout || "default"}`;
+
     // Set the recently added item to trigger the popup
     const recentlyAddedItem = {
+      id: uniqueId,
       product,
       quantity,
-      options,
+      checked: true,
+      ...(options?.switch && { switch: options.switch }),
+      ...(options?.color && { color: options.color }),
+      ...(options?.layout && { layout: options.layout }),
     };
     setRecentlyAddedItem(recentlyAddedItem);
 
@@ -87,11 +122,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
             : item
         );
       } else {
+        // Generate unique ID for the cart item
+        const uniqueId = `${product.id}-${options?.switch || "default"}-${
+          options?.color || "default"
+        }-${options?.layout || "default"}`;
+
         return [
           ...prevItems,
           {
+            id: uniqueId,
             product,
             quantity,
+            checked: true, // Default to checked for new items
             ...(options?.switch && { switch: options.switch }),
             ...(options?.color && { color: options.color }),
             ...(options?.layout && { layout: options.layout }),
@@ -101,25 +143,39 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = (itemId: string, quantity: number) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item.product.id === productId
-          ? { ...item, quantity: Math.max(1, quantity) }
-          : item
+        item.id === itemId ? { ...item, quantity: Math.max(1, quantity) } : item
       )
     );
   };
 
-  const removeFromCart = (productId: string) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((item) => item.product.id !== productId)
-    );
+  const removeFromCart = (itemId: string) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
   };
 
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem("cart");
+  };
+
+  const toggleItemChecked = (itemId: string) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === itemId ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
+  const toggleAllItems = (checked: boolean) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) => ({ ...item, checked }))
+    );
+  };
+
+  const getCheckedItems = () => {
+    return cartItems.filter((item) => item.checked);
   };
 
   return (
@@ -130,6 +186,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
         updateQuantity,
         removeFromCart,
         clearCart,
+        toggleItemChecked,
+        toggleAllItems,
+        getCheckedItems,
         recentlyAddedItem,
       }}
     >

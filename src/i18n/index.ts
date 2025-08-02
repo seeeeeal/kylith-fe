@@ -22,6 +22,7 @@ const ja = {
     free: "無料",
     addToCart: "カートに追加",
     addedToCart: "カートに追加しました！",
+    continueShopping: "買い物を続ける",
   },
   stock: {
     inStock: "在庫あり",
@@ -147,6 +148,7 @@ const en = {
     free: "Free",
     addToCart: "Add to Cart",
     addedToCart: "Added to cart!",
+    continueShopping: "Continue Shopping",
   },
   stock: {
     inStock: "In Stock",

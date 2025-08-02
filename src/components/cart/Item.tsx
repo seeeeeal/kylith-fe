@@ -1,7 +1,7 @@
 import { useContext, useCallback } from "react";
 import { CartItem } from "../../types/CartItem";
 import { FiTrash2 } from "react-icons/fi";
-import { KuiIconButton, KuiInputNumber } from "@/components/kui";
+import { KuiCheckbox, KuiIconButton, KuiInputNumber } from "@/components/kui";
 import PriceTag from "../PriceTag";
 import { CartContext } from "@/context/CartContext";
 
@@ -15,14 +15,14 @@ export default function Item({ item, className }: ItemProps) {
 
   const handleQuantityChange = useCallback(
     (value: number) => {
-      updateQuantity(item.product.id, value);
+      updateQuantity(item.id, value);
     },
-    [updateQuantity, item.product.id]
+    [updateQuantity, item.id]
   );
 
   const handleRemove = useCallback(() => {
-    removeFromCart(item.product.id);
-  }, [removeFromCart, item.product.id]);
+    removeFromCart(item.id);
+  }, [removeFromCart, item.id]);
 
   return (
     <div className={`flex space-x-4 p-4 ${className || ""}`}>

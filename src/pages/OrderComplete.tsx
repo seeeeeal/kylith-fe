@@ -27,9 +27,8 @@ const OrderComplete = () => {
         <div>
           <Link to="/" className="block">
             <KuiButton
-              variant="solid"
-              color="default"
-              size="medium"
+              variant="filled"
+              shape="round"
               className="w-full text-base sm:text-sm"
             >
               {t("orderComplete.backToHome")}
