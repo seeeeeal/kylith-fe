@@ -23,7 +23,6 @@ export default function Selector({
   items,
 }: SelectorProps) {
   const selectedItem = items.find((item) => item.value === selected);
-  console.log("Selected item:", selectedItem);
 
   return (
     <div>

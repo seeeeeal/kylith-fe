@@ -81,7 +81,6 @@ const Checkout = () => {
         // カートをクリア
         localStorage.removeItem("cart");
 
-        console.log("注文完了:", orderData);
         navigate("/order-complete", {
           state: { orderNumber, total },
         });
@@ -90,7 +89,6 @@ const Checkout = () => {
         throw new Error(t("checkout.paymentFailed"));
       }
     } catch (error) {
-      console.error("注文エラー:", error);
       alert(error instanceof Error ? error.message : t("checkout.orderError"));
     } finally {
       setIsSubmitting(false);

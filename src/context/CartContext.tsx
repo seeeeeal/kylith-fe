@@ -15,6 +15,7 @@ interface CartContextType {
   toggleItemChecked: (itemId: string) => void;
   toggleAllItems: (checked: boolean) => void;
   getCheckedItems: () => CartItem[];
+  clearRecentlyAddedItem: () => void;
   recentlyAddedItem:
     | {
         product: Product;
@@ -33,6 +34,7 @@ export const CartContext = createContext<CartContextType>({
   toggleItemChecked: () => {},
   toggleAllItems: () => {},
   getCheckedItems: () => [],
+  clearRecentlyAddedItem: () => {},
   recentlyAddedItem: undefined,
 } as CartContextType);
 
@@ -178,6 +180,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return cartItems.filter((item) => item.checked);
   };
 
+  const clearRecentlyAddedItem = () => {
+    setRecentlyAddedItem(undefined);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -189,6 +195,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         toggleItemChecked,
         toggleAllItems,
         getCheckedItems,
+        clearRecentlyAddedItem,
         recentlyAddedItem,
       }}
     >

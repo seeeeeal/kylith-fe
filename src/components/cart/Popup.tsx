@@ -7,9 +7,16 @@ import clsx from "clsx";
 import { Link } from "react-router";
 
 export default function CartPopup() {
-  const { recentlyAddedItem } = useContext(CartContext);
+  const { recentlyAddedItem, clearRecentlyAddedItem } = useContext(CartContext);
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  // Close the popup and clear the recently added item
+  // (to avoid the popup being shown again unexpectedly)
+  const handleClose = () => {
+    setIsVisible(false);
+    clearRecentlyAddedItem();
+  };
 
   // Listen to `recentlyAddedItem` changes,
   // and set `isVisible` to true if `recentlyAddedItem` is defined
@@ -21,7 +28,7 @@ export default function CartPopup() {
   // (if new `recentlyAddedItem` is defined or mouse is hovered, reset the timer)
   useEffect(() => {
     if (isVisible && recentlyAddedItem !== undefined && !isHovered) {
-      const timer = setTimeout(() => setIsVisible(false), 3000);
+      const timer = setTimeout(handleClose, 3000);
       return () => clearTimeout(timer);
     }
     return;
@@ -41,7 +48,7 @@ export default function CartPopup() {
         size="small"
         variant="text"
         className="absolute top-3 right-3"
-        onClick={() => setIsVisible(false)}
+        onClick={handleClose}
       >
         <FiX />
       </KuiIconButton>
@@ -75,7 +82,7 @@ export default function CartPopup() {
         </div>
       </div>
 
-      <Link to="/cart" onClick={() => setIsVisible(false)}>
+      <Link to="/cart" onClick={handleClose}>
         <KuiButton shape="round" size="medium" className="w-full">
           <span className="text-xs">カートを確認</span>
         </KuiButton>
