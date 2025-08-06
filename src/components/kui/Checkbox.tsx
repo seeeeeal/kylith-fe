@@ -54,7 +54,7 @@ export default function KuiCheckbox({
           className={clsx(
             "appearance-none border-2 border-gray-300 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
             sizeClasses[size],
-            checked && "bg-blue-600 border-blue-600",
+            checked && "bg-kui-primary border-kui-primary",
             disabled && "opacity-50 cursor-not-allowed",
             !disabled && "hover:border-gray-400"
           )}
