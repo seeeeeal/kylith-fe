@@ -12,7 +12,7 @@ export default function LandingPage() {
     <>
       <section className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] flex items-center justify-center bg-black text-white">
         <img
-          src="/HE.jpg"
+          src="/Q1-Max-3.webp"
           alt="Kylith"
           className="absolute top-0 left-0 w-full h-full object-cover opacity-50"
         />

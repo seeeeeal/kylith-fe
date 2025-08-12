@@ -12,7 +12,19 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/75.webp",
+    images: ["/75.webp", "/75-white.webp"],
     series: "basic" as const,
+    colors: [
+      {
+        name: "黒",
+        image: "/75.webp",
+      },
+      {
+        name: "白",
+        image: "/75-white.webp",
+      },
+    ],
+    stock: 17,
   },
   {
     id: "kylith-75-compact",
@@ -27,7 +39,15 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/75.webp",
+    images: ["/75.webp", "/75-white.webp"],
+    colors: [
+      {
+        name: "黒",
+        image: "/75.webp",
+      },
+    ],
     series: "compact" as const,
+    stock: 0,
   },
   {
     id: "kylith-75-HE",
@@ -42,8 +62,15 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/75-HE.webp",
-    status: ["new"],
+    images: ["/75-HE.webp", "/75-HE-white.webp"],
+    colors: [
+      {
+        name: "黒",
+        image: "/75-HE.webp",
+      },
+    ],
     series: "he" as const,
+    stock: 0,
   },
 
   {
@@ -59,7 +86,15 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/100.webp",
+    images: ["/100.webp", "/100-white.webp"],
     series: "basic" as const,
+    colors: [
+      {
+        name: "黒",
+        image: "/100.webp",
+      },
+    ],
+    stock: 0,
   },
   {
     id: "kylith-96-compact",
@@ -74,7 +109,15 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/100.webp",
+    images: ["/100.webp", "/100-white.webp"],
     series: "compact" as const,
+    colors: [
+      {
+        name: "黒",
+        image: "/100.webp",
+      },
+    ],
+    stock: 0,
   },
   {
     id: "kylith-96-HE",
@@ -89,8 +132,15 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/100-HE.webp",
-    status: ["new"],
+    images: ["/100-HE.webp", "/100-HE-white.webp"],
+    colors: [
+      {
+        name: "黒",
+        image: "/100-HE.webp",
+      },
+    ],
     series: "he" as const,
+    stock: 0,
   },
 
   {
@@ -106,7 +156,15 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/100.webp",
+    images: ["/100.webp"],
     series: "basic" as const,
+    colors: [
+      {
+        name: "黒",
+        image: "/100.webp",
+      },
+    ],
+    stock: 0,
   },
   {
     id: "kylith-100-compact",
@@ -121,7 +179,15 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/100.webp",
+    images: ["/100.webp"],
     series: "compact" as const,
+    colors: [
+      {
+        name: "黒",
+        image: "/100.webp",
+      },
+    ],
+    stock: 0,
   },
   {
     id: "kylith-100-HE",
@@ -136,8 +202,15 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/100-HE.webp",
-    status: ["new"],
+    images: ["/100-HE.webp"],
+    colors: [
+      {
+        name: "黒",
+        image: "/100-HE.webp",
+      },
+    ],
     series: "he" as const,
+    stock: 0,
   },
 ];
 

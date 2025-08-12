@@ -11,12 +11,12 @@ type IconButtonProps = {
   className?: string;
   type?: "button" | "submit" | "reset";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  "aria-label": string; // 必須にする
+  "aria-label"?: string;
   "aria-describedby"?: string;
 };
 
 const baseClass =
-  "inline-flex justify-center items-center cursor-pointer rounded-full transform duration-200 hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed";
+  "inline-flex justify-center items-center rounded-full transform duration-200";
 const sizeClassMap = {
   small: "w-6 h-6 text-xs",
   medium: "w-8 h-8 text-sm",
@@ -25,7 +25,7 @@ const sizeClassMap = {
 
 export default function KuiIconButton({
   children,
-  "aria-label": ariaLabel,
+  "aria-label": ariaLabel = "",
   "aria-describedby": ariaDescribedby,
   variant = "solid",
   disabled = false,

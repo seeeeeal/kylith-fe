@@ -106,11 +106,37 @@ export const Search: Story = {
 };
 
 export const Disabled: Story = {
-  args: {
-    children: <FiPlus />,
-    "aria-label": "Add item (disabled)",
-    disabled: true,
-  },
+  render: (args: any) => (
+    <div style={{ display: "flex", gap: 12 }}>
+      <KuiIconButton
+        {...args}
+        variant="solid"
+        color="error"
+        aria-label="Solid variant"
+        disabled
+      >
+        <FiPlus />
+      </KuiIconButton>
+      <KuiIconButton
+        {...args}
+        variant="filled"
+        color="success"
+        aria-label="Filled variant"
+        disabled
+      >
+        <FiPlus />
+      </KuiIconButton>
+      <KuiIconButton
+        {...args}
+        variant="text"
+        color="warning"
+        aria-label="Text variant"
+        disabled
+      >
+        <FiPlus />
+      </KuiIconButton>
+    </div>
+  ),
 };
 
 export const Sizes: Story = {

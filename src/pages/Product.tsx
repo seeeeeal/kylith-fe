@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, Link } from "react-router";
 import { CartContext } from "../context/CartContext";
-import { KuiBreadcrumbs } from "../components/kui";
+import { KuiBreadcrumbs, KuiTag } from "../components/kui";
 import Selector from "../components/Selector";
 import { FiChevronRight, FiHeart, FiTruck } from "react-icons/fi";
 import { KuiIconButton, KuiButton, KuiInputNumber } from "@/components/kui";
@@ -11,6 +11,7 @@ import products from "../assets/products";
 import switches from "../assets/switches";
 import PriceTag from "@/components/PriceTag";
 import type { Product } from "../types/Product";
+import ImageGallery from "../components/product/ImageGallery";
 
 function Product() {
   const { id } = useParams();
@@ -34,10 +35,13 @@ function Product() {
   );
 
   // Add state for color and layout selection
-  const [selectedColor, setSelectedColor] = useState(t("product.black"));
+  const [selectedColor, setSelectedColor] = useState(product?.colors[0].name);
   const [selectedLayout, setSelectedLayout] = useState(
     t("product.englishLayout")
   );
+  const currentColorImage = product?.colors.find(
+    (color) => color.name === selectedColor
+  )?.image;
 
   if (!product) {
     return (
@@ -73,19 +77,19 @@ function Product() {
       </div>
 
       <div className="mt-4 flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8">
-        {/* 商品画像 */}
-        <div className="w-full lg:basis-1/2">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-auto rounded-lg"
+        <div className="w-full lg:basis-1/2 max-w-full lg:max-w-1/2">
+          <ImageGallery
+            images={product.images}
+            productName={product.name}
+            currentImage={currentColorImage ?? ""}
           />
         </div>
 
-        {/* 商品詳細 */}
         <div className="flex flex-col space-y-4 w-full lg:basis-1/2">
           <PriceTag amount={product.price} size="large" />
           <hr className="border-kui-border" />
+
+          {/* Switch selector */}
           <div>
             <Selector
               title={t("product.switch")}
@@ -105,48 +109,63 @@ function Product() {
               <FiChevronRight />
             </button>
           </div>
+
           <hr className="border-kui-border" />
-          <div>
-            <Selector
-              title={t("product.color")}
-              selected={selectedColor}
-              onSelect={(v) => setSelectedColor(v)}
-              items={[
-                {
-                  value: t("product.black"),
-                  label: t("product.black"),
-                  image: "/original-b13d8875c0376830796c926f87a903b8.webp",
-                },
-                {
-                  value: t("product.white"),
-                  label: t("product.white"),
-                  image: "/original-cc17bd86f94ae621760cb3b422667b3a.webp",
-                },
-              ]}
-            />
-          </div>
+
+          {/* Color selector */}
+          <Selector
+            title={t("product.color")}
+            selected={selectedColor}
+            onSelect={(v) => setSelectedColor(v)}
+            items={product.colors.map((color) => ({
+              value: color.name,
+              label: color.name,
+              image: color.image,
+            }))}
+          />
+
           <hr className="border-gray-200" />
+
+          {/* Layout selector */}
+          <Selector
+            title={t("product.layout")}
+            selected={selectedLayout}
+            onSelect={(v) => setSelectedLayout(v)}
+            items={[
+              {
+                value: t("product.englishLayout"),
+                label: t("product.englishLayout"),
+              },
+              {
+                value: t("product.japaneseLayout"),
+                label: t("product.japaneseLayout"),
+              },
+            ]}
+          />
+
           <div>
-            <Selector
-              title={t("product.layout")}
-              selected={selectedLayout}
-              onSelect={(v) => setSelectedLayout(v)}
-              items={[
-                {
-                  value: t("product.englishLayout"),
-                  label: t("product.englishLayout"),
-                },
-                {
-                  value: t("product.japaneseLayout"),
-                  label: t("product.japaneseLayout"),
-                },
-              ]}
-            />
-          </div>
-          <div>
-            <div className="inline-flex items-center gap-1 text-xs text-green-600 bg-green-100 px-2 py-0.5 rounded-full mb-4">
-              <span className="w-2 h-2 bg-green-500 rounded-full"></span>{" "}
-              {t("stock.inStock")}
+            <div className="mb-4">
+              {product.stock > 0 ? (
+                <KuiTag
+                  color="success"
+                  size="small"
+                  variant="soft"
+                  className="rounded-full!"
+                >
+                  <span className="w-2 h-2 bg-kui-success rounded-full"></span>
+                  {t("stock.inStock")}
+                </KuiTag>
+              ) : (
+                <KuiTag
+                  color="error"
+                  size="small"
+                  variant="soft"
+                  className="rounded-full!"
+                >
+                  <span className="w-2 h-2 bg-kui-error rounded-full"></span>
+                  {t("stock.outOfStock")}
+                </KuiTag>
+              )}
             </div>
 
             <div className="flex gap-4 items-center w-full">
@@ -156,6 +175,7 @@ function Product() {
                 min={1}
                 max={99}
                 className="h-12"
+                disabled={product.stock === 0}
               />
 
               <KuiButton
@@ -163,6 +183,7 @@ function Product() {
                 color="default"
                 size="large"
                 shape="round"
+                disabled={product.stock === 0}
                 onClick={() => {
                   addToCart(product as Product, quantity, {
                     switch: selectedSwitch,

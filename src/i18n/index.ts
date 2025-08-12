@@ -26,7 +26,7 @@ const ja = {
   },
   stock: {
     inStock: "在庫あり",
-    outOfStock: "在庫なし",
+    outOfStock: "売切れ",
     lowStock: "在庫残りわずか",
     available: "利用可能",
     unavailable: "利用不可",
@@ -35,7 +35,7 @@ const ja = {
   product: {
     addToCart: "カートに追加",
     inStock: "在庫あり",
-    outOfStock: "在庫なし",
+    outOfStock: "売切れ",
     switch: "スイッチ",
     color: "カラー",
     layout: "配列",
