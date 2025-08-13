@@ -4,7 +4,12 @@ import { useParams, Link } from "react-router";
 import { CartContext } from "../context/CartContext";
 import { KuiBreadcrumbs, KuiTag } from "../components/kui";
 import Selector from "../components/Selector";
-import { FiChevronRight, FiHeart, FiTruck } from "react-icons/fi";
+import {
+  FiChevronRight,
+  FiHeart,
+  FiShoppingCart,
+  FiTruck,
+} from "react-icons/fi";
 import { KuiIconButton, KuiButton, KuiInputNumber } from "@/components/kui";
 // mock data.
 import products from "../assets/products";
@@ -12,6 +17,8 @@ import switches from "../assets/switches";
 import PriceTag from "@/components/PriceTag";
 import type { Product } from "../types/Product";
 import ImageGallery from "../components/product/ImageGallery";
+import Review from "../components/product/Review";
+import { reviews } from "@/assets/reviews";
 
 function Product() {
   const { id } = useParams();
@@ -193,6 +200,7 @@ function Product() {
                 }}
                 className="flex-1"
               >
+                <FiShoppingCart className="w-4 h-4 mr-2" />
                 {t("cart.addToCart")}
               </KuiButton>
             </div>
@@ -207,11 +215,17 @@ function Product() {
 
             <div className="bg-kui-base text-kui-secondary rounded-lg p-4 flex items-center gap-2">
               <FiTruck className="w-4 h-4" />
-              <span className="text-xs">日本全国送料無料です。</span>
+              <span className="text-xs">
+                10000円以上の注文で日本全国送料無料。
+              </span>
             </div>
           </div>
         </div>
       </div>
+
+      <hr className="border-kui-border my-8" />
+
+      <Review reviews={reviews} />
     </div>
   );
 }

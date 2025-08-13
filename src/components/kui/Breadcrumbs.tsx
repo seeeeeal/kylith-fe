@@ -23,14 +23,14 @@ export default function KuiBreadcrumbs({
 }: BreadcrumbsProps) {
   return (
     <nav
-      className={clsx("flex text-xs text-kui-secondary", className)}
+      className={clsx("flex text-xxs text-kui-secondary", className)}
       aria-label="Breadcrumb"
     >
       <ol className="flex items-center">
         {items.map((item, index) => (
           <li key={index} className="flex items-center">
             {index > 0 && (
-              <span className="mx-1 text-kui-secondary" aria-hidden="true">
+              <span className="mx-1 text-kui-secondary/50" aria-hidden="true">
                 {separator}
               </span>
             )}

@@ -6,6 +6,7 @@ import { Pagination } from "swiper/modules";
 import { KuiButton } from "@/components/kui";
 import products from "../assets/products";
 import PriceTag from "@/components/PriceTag";
+import { Link } from "react-router";
 
 export default function LandingPage() {
   return (
@@ -23,14 +24,16 @@ export default function LandingPage() {
           <p className="text-xs sm:text-sm mb-4 sm:mb-6 text-gray-300 max-w-md mx-auto">
             Kylithは、美しさと性能を両立する次世代キーボードブランド。
           </p>
-          <KuiButton
-            variant="solid"
-            color="default"
-            size="medium"
-            className="px-4 sm:px-6 py-2 sm:py-3"
-          >
-            今すぐ見る
-          </KuiButton>
+          <Link to="/keyboards">
+            <KuiButton
+              variant="solid"
+              color="default"
+              size="medium"
+              className="px-4 sm:px-6 py-2 sm:py-3"
+            >
+              今すぐ見る
+            </KuiButton>
+          </Link>
         </div>
       </section>
 
@@ -43,11 +46,11 @@ export default function LandingPage() {
           spaceBetween={20}
           breakpoints={{
             640: {
-              slidesPerView: 2,
+              slidesPerView: 3,
               spaceBetween: 30,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               spaceBetween: 30,
             },
           }}
@@ -55,23 +58,34 @@ export default function LandingPage() {
           pagination={{
             dynamicBullets: true,
           }}
-          className="pb-8"
         >
           {products.map((product) => (
             <SwiperSlide key={product.id}>
-              <div className="rounded-lg p-3 sm:p-4">
+              <div className="rounded-lg px-4 py-8">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-auto rounded"
+                  className="w-full h-auto rounded mb-2"
                 />
-                <h2 className="text-sm sm:text-base font-semibold mt-2 leading-5 sm:leading-6">
+                <h2 className="text-sm sm:text-base font-semibold mb-2 leading-5 sm:leading-6">
                   {product.name}
                 </h2>
 
-                <div className="mt-1">
+                <div className="mb-2">
                   <PriceTag amount={product.price} />
                 </div>
+
+                <Link to={`/products/${product.id}`}>
+                  <KuiButton
+                    variant="solid"
+                    color="default"
+                    size="medium"
+                    shape="round"
+                    className="w-full"
+                  >
+                    今すぐ見る
+                  </KuiButton>
+                </Link>
               </div>
             </SwiperSlide>
           ))}
