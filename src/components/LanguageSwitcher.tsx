@@ -14,8 +14,8 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
-    { code: "ja", name: "日本語", flag: "🇯🇵" },
-    { code: "en", name: "English", flag: "🇺🇸" },
+    { code: "ja", name: "日本語" },
+    { code: "en", name: "English" },
   ];
 
   const currentLang =
@@ -23,21 +23,16 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
   return (
     <div className="relative">
-      <KuiButton
-        variant="text"
-        size="medium"
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2"
+        className="flex items-center gap-1 text-xxs"
       >
-        <FiGlobe className="text-base" />
-        <span className="hidden sm:inline">{currentLang.flag}</span>
+        <FiGlobe />
         <span className="hidden sm:inline">{currentLang.name}</span>
         <FiChevronDown
-          className={`text-xs transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
+          className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
         />
-      </KuiButton>
+      </button>
 
       {isOpen && (
         <div className="absolute left-0 bottom-full mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
