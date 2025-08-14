@@ -1,0 +1,211 @@
+// 日本語翻訳
+const ja = {
+  nav: {
+    home: "ホーム",
+    keyboards: "キーボード",
+    accessories: "アクセサリー",
+    support: "サポート",
+  },
+  landing: {
+    hero: {
+      title: "Where performance meets style.",
+      subtitle: "Kylithは、美しさと性能を両立する次世代キーボードブランド。",
+      cta: "今すぐ見る",
+    },
+    products: "製品",
+    reviews: "レビュー",
+    reviewsList: [
+      {
+        author: "佐藤美咲",
+        job: "作家",
+        title: "反響音のない快適な打鍵感",
+        content:
+          "以前使っていたキーボードでは金属音が気になっていましたが、Kylithではまったく感じません。  \n音が柔らかく、長時間の作業でも耳が疲れず、集中力が続きます。",
+        rating: 5,
+      },
+      {
+        author: "鈴木一郎",
+        job: "プログラマー",
+        title: "自然とメインキーボードになりました",
+        content:
+          "・軽すぎず、しっかりとした打鍵感で安定感があります。  \n・キーの表面にやや丸みがあり、指が自然に収まる形状。  \n・配列も視認性が良く、日常使いでも迷いません。  \n・ESCキーとEnterキーの色分けが地味に便利！",
+        rating: 5,
+      },
+      {
+        author: "中村健太",
+        job: "デザイナー",
+        title: "デザイン重視でも満足できる実力派",
+        content:
+          "見た目の美しさで選びましたが、打鍵音・打鍵感ともに期待以上でした。  \nUS配列に最初は戸惑いましたが、慣れるとスムーズに入力できます。  \nアルミボディの重量感も好みで、キーの沈み込みも上質。  \n静かなオフィスでも使えるので、仕事にも使っています。",
+        rating: 5,
+      },
+      {
+        author: "井上遼",
+        job: "学生",
+        title: "ゲームにも勉強にもぴったり",
+        content:
+          "初めてのメカニカルキーボードでしたが、静音性が高くて驚きました。  \nキーの打ち心地もクセになり、レポート作成もゲームも快適です。  \nRGBライトが地味にテンションを上げてくれます！",
+        rating: 5,
+      },
+      {
+        author: "松本優子",
+        job: "ライター",
+        title: "長時間の作業に向いています",
+        content:
+          "音が柔らかく、打鍵感もしっかりしていて、長時間タイピングしても疲れません。  \nシンプルな見た目も気に入っています。  \nUSB-C接続で取り回しも楽です。",
+        rating: 4,
+      },
+      {
+        author: "大谷翼",
+        job: "ゲーマー",
+        title: "反応速度と安定性が抜群",
+        content:
+          "FPSや格闘ゲームをプレイしていますが、入力の遅延がまったく感じられません。\nキーの反応も素早く、連打しても安定しています。\nライティングも好みに設定できて、夜のプレイがさらに楽しくなりました。",
+        rating: 5,
+      },
+    ],
+    features: "特徴",
+    featuresList: [
+      {
+        image: "/Q1-Max-2.webp",
+        title: "心地よい打鍵感",
+        description:
+          "しっかりとした反発と静音性を両立した、\nバランスの良い打鍵感を実現。",
+      },
+      {
+        image: "/Q1-Max-3.webp",
+        title: "スタイルと機能を兼ね備えたデザイン",
+        description:
+          "冷たいアルミとマットなPBTキーキャップが、\n手触りと美観を引き立てます。",
+      },
+      {
+        image: "/Q1-Max-4.webp",
+        title: "すべてのデバイスに対応",
+        description:
+          "Mac・Windows・Linux・iOS\nすべてのデバイスで快適に使用できます。",
+      },
+      {
+        image: "/Q1-Max-6.webp",
+        title: "5年長期保証",
+        description:
+          "長く安心して使えるよう、\n購入から5年間の製品保証が付いています。",
+      },
+    ],
+    details: "詳細",
+    newsletter: {
+      title: "あなたにぴったりのKylithを、今すぐ。",
+      subtitle:
+        "Kylithの最新情報をお届けします。いつでも解除できます。詳しくは<a>プライバシーポリシー</a>をご確認ください。",
+      placeholder: "メールアドレスを入力",
+    },
+  },
+  price: {
+    taxIncluded: "税込",
+  },
+  footer: {
+    description: "Kylithは、美しさと性能を両立する次世代キーボードブランド。",
+    copyright: "© 2025 Kylith. All rights reserved.",
+    privacyPolicy: "プライバシーポリシー",
+    termsOfService: "利用規約",
+    contact: "お問い合わせ",
+    about: "会社概要",
+    brandStory: "ブランドストーリー",
+    employment: "採用情報",
+    support: "サポート",
+    shipping: "配送・返品について",
+    faq: "よくある質問",
+    switchGuide: "スイッチガイド",
+  },
+  cart: {
+    title: "カート",
+    selectAll: "全て選択",
+    removeAll: "全て削除",
+    itemsInCart: "個の商品がカートに入っています",
+    subtotal: "小計:",
+    shipping: "送料:",
+    total: "合計:",
+    taxNote: "* 価格には消費税が含まれています",
+    proceedToCheckout: "レジへ進む",
+    free: "無料",
+    addToCart: "カートに追加",
+    addedToCart: "カートに追加しました！",
+    continueShopping: "買い物を続ける",
+  },
+  stock: {
+    inStock: "在庫あり",
+    outOfStock: "売切れ",
+    lowStock: "在庫残りわずか",
+    available: "利用可能",
+    unavailable: "利用不可",
+    limited: "限定",
+  },
+  product: {
+    addToCart: "カートに追加",
+    inStock: "在庫あり",
+    outOfStock: "売切れ",
+    switch: "スイッチ",
+    color: "カラー",
+    layout: "配列",
+    switchSupport: "スイッチ選びをサポート",
+    englishLayout: "英語配列",
+    japaneseLayout: "日本語配列",
+    black: "黒",
+    white: "白",
+    new: "新製品",
+    gridView: "グリッド表示",
+    columnView: "カラム表示",
+    showFilter: "フィルターを表示",
+    hideFilter: "フィルターを非表示",
+    filter: "フィルター",
+  },
+  checkout: {
+    shippingInfo: "お届け先情報",
+    payment: "お支払い",
+    name: "氏名",
+    postalCode: "郵便番号",
+    address: "住所",
+    phoneNumber: "電話番号",
+    cardNumber: "カード番号",
+    expirationDate: "有効期限",
+    securityCode: "セキュリティコード",
+    cardHolderName: "カードの名義人",
+    placeOrder: "注文する",
+    processing: "処理中...",
+    required: "は必須です",
+    invalidPostalCode: "正しい郵便番号を入力してください（例: 123-4567）",
+    invalidPhone: "正しい電話番号を入力してください",
+    invalidCard: "正しいカード番号を入力してください",
+    invalidExpiry: "MM/YY形式で入力してください",
+    invalidSecurityCode: "3-4桁の数字を入力してください",
+    paymentFailed: "決済に失敗しました。カード情報を確認してください。",
+    orderError: "注文処理中にエラーが発生しました。",
+  },
+  orderComplete: {
+    title: "ご注文ありがとうございます！",
+    orderNumber: "注文番号",
+    paymentAmount: "お支払い金額",
+    completed: "ご注文が正常に完了しました。",
+    emailSent: "確認メールをお送りしましたので、ご確認ください。",
+    demoNote: "※ このデモでは実際のメールは送信されません",
+    backToHome: "ホームに戻る",
+    viewProducts: "商品一覧を見る",
+  },
+  filter: {
+    title: "フィルター",
+    clear: "クリア",
+    layout: "レイアウト",
+    switch: "スイッチ",
+    priceRange: "価格範囲",
+    all: "すべて",
+    results: "件の商品が見つかりました",
+  },
+  common: {
+    loading: "読み込み中...",
+    error: "エラーが発生しました",
+    notFound: "ページが見つかりません",
+    backToProducts: "商品一覧に戻る",
+    search: "Kylithシリーズ・スイッチで検索",
+  },
+};
+
+export default ja;

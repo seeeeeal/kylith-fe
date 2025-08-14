@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 type PriceProps = {
   amount: number | string;
@@ -35,6 +36,7 @@ function PriceTag({
   taxIncluded = true,
   emphasis = true,
 }: PriceProps) {
+  const { t } = useTranslation();
   return (
     <div className="flex gap-1 items-baseline text-kui-secondary">
       <span className={sizeClassMap[size].currency}>¥</span>
@@ -48,7 +50,9 @@ function PriceTag({
         {amount.toLocaleString()}
       </span>
       {taxIncluded && (
-        <span className={sizeClassMap[size].taxIncluded}>(税込)</span>
+        <span className={sizeClassMap[size].taxIncluded}>
+          ({t("price.taxIncluded")})
+        </span>
       )}
     </div>
   );

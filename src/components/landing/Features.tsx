@@ -1,40 +1,24 @@
 import { KuiButton } from "@/components/kui";
+import { useTranslation } from "react-i18next";
 
-const features = [
-  {
-    image: "/Q1-Max-2.webp",
-    title: "心地よい打鍵感",
-    description:
-      "しっかりとした反発と静音性を両立した、\nバランスの良い打鍵感を実現。",
-  },
-  {
-    image: "/Q1-Max-3.webp",
-    title: "スタイルと機能を兼ね備えたデザイン",
-    description:
-      "冷たいアルミとマットなPBTキーキャップが、\n手触りと美観を引き立てます。",
-  },
-  {
-    image: "/Q1-Max-4.webp",
-    title: "すべてのデバイスに対応",
-    description:
-      "Mac・Windows・Linux・iOS\nすべてのデバイスで快適に使用できます。",
-  },
-  {
-    image: "/Q1-Max-6.webp",
-    title: "5年長期保証",
-    description:
-      "長く安心して使えるよう、\n購入から5年間の製品保証が付いています。",
-  },
-];
+interface Feature {
+  image: string;
+  title: string;
+  description: string;
+}
 
 export default function Features() {
+  const { t } = useTranslation();
+  const features = t("landing.featuresList", {
+    returnObjects: true,
+  }) as Feature[];
+
   return (
-    <section className="max-w-screen-xl mx-auto p-8">
-      <h2 className="text-2xl mb-8">
-        <span className="font-semibold">Features</span>
-        <span className="ml-2 text-xs text-kui-default/50">製品特徴</span>
+    <section className="max-w-screen-xl mx-auto p-4 sm:p-8">
+      <h2 className="text-xl sm:text-2xl mb-4 sm:mb-8">
+        <span className="font-semibold">{t("landing.features")}</span>
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {features.map((feature, index) => (
           <div key={index} className="bg-kui-base rounded-xl p-4">
             <img
@@ -55,7 +39,7 @@ export default function Features() {
                   shape="round"
                   className="w-full"
                 >
-                  詳細を見る
+                  {t("landing.details")}
                 </KuiButton>
               </a>
             </div>

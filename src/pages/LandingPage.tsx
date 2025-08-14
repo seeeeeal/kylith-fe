@@ -6,7 +6,7 @@ import Newsletter from "@/components/landing/Newsletter";
 
 export default function LandingPage() {
   return (
-    <div className="">
+    <div>
       <Hero />
       <Products />
       <Reviews />

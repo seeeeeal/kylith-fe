@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import {
@@ -30,6 +30,10 @@ export default function Nav() {
     handleDropdownClose,
     closeAllDropdowns,
   } = useDropdown();
+
+  useEffect(() => {
+    closeAllDropdowns();
+  }, [location.pathname]);
 
   const cartItemCount = cartItems.reduce(
     (total, item) => total + item.quantity,

@@ -9,7 +9,7 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 export default function Footer() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
   const handleLanguageChange = (language: string) => {
@@ -29,12 +29,12 @@ export default function Footer() {
 
   return (
     <footer className="bg-kui-base text-sm py-6 px-4 mt-12 pb-24 relative overflow-hidden">
-      <div className="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8">
           <div>
             <div className="text-xl font-bold mb-1">Kylith</div>
             <p className="text-xxs text-kui-default/50 leading-relaxed">
-              Kylithは、美しさと性能を両立する次世代キーボードブランド。
+              {t("footer.description")}
               <br />
               Where performance meets style.
             </p>
@@ -61,34 +61,36 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               <div className="text-kui-default font-semibold">Kylith</div>
               <a href="#" className="hover:underline">
-                会社概要
+                {t("footer.about")}
               </a>
               <a href="#" className="hover:underline">
-                ブランドストーリー
+                {t("footer.brandStory")}
               </a>
               <a href="#" className="hover:underline">
-                採用情報
+                {t("footer.employment")}
               </a>
               <a href="#" className="hover:underline">
-                プライバシー
+                {t("footer.privacyPolicy")}
               </a>
               <a href="#" className="hover:underline">
-                利用規約
+                {t("footer.termsOfService")}
               </a>
             </div>
             <div className="flex flex-col gap-2">
-              <div className="text-kui-default font-semibold">サポート</div>
+              <div className="text-kui-default font-semibold">
+                {t("footer.support")}
+              </div>
               <a href="#" className="hover:underline">
-                スイッチガイド
+                {t("footer.switchGuide")}
               </a>
               <a href="#" className="hover:underline">
-                配送・返品について
+                {t("footer.shipping")}
               </a>
               <a href="#" className="hover:underline">
-                よくある質問
+                {t("footer.faq")}
               </a>
               <a href="#" className="hover:underline">
-                お問い合わせ
+                {t("footer.contact")}
               </a>
             </div>
           </div>
@@ -107,7 +109,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-[240px] font-bold absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 select-none">
+      <div className="text-[120px] sm:text-[240px] font-bold absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 select-none">
         <span className="opacity-50 inline-block bg-clip-text text-transparent bg-gradient-to-r from-kui-primary/20 to-purple-500/10">
           Kylith
         </span>
