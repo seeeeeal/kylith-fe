@@ -28,9 +28,9 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-kui-base text-sm py-6 px-4 mt-12 pb-32 relative overflow-hidden">
+    <footer className="bg-kui-base text-sm py-6 px-4 mt-12 pb-24 relative overflow-hidden">
       <div className="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8">
           <div>
             <div className="text-xl font-bold mb-1">Kylith</div>
             <p className="text-xxs text-kui-default/50 leading-relaxed">
@@ -64,6 +64,12 @@ export default function Footer() {
                 会社概要
               </a>
               <a href="#" className="hover:underline">
+                ブランドストーリー
+              </a>
+              <a href="#" className="hover:underline">
+                採用情報
+              </a>
+              <a href="#" className="hover:underline">
                 プライバシー
               </a>
               <a href="#" className="hover:underline">
@@ -72,6 +78,12 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-2">
               <div className="text-kui-default font-semibold">サポート</div>
+              <a href="#" className="hover:underline">
+                スイッチガイド
+              </a>
+              <a href="#" className="hover:underline">
+                配送・返品について
+              </a>
               <a href="#" className="hover:underline">
                 よくある質問
               </a>
@@ -95,7 +107,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-[240px] font-bold absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2/5 select-none">
+      <div className="text-[240px] font-bold absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 select-none">
         <span className="opacity-50 inline-block bg-clip-text text-transparent bg-gradient-to-r from-kui-primary/20 to-purple-500/10">
           Kylith
         </span>

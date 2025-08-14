@@ -50,7 +50,6 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
                     : "text-gray-700"
                 }`}
               >
-                <span className="text-lg">{language.flag}</span>
                 <span className="text-sm">{language.name}</span>
               </button>
             ))}
