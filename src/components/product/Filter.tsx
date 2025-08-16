@@ -5,7 +5,7 @@ import {
   KuiIconButton,
   KuiTooltip,
 } from "@/components/kui";
-import { FiFilter, FiRotateCcw, FiX } from "react-icons/fi";
+import { FiChevronDown, FiFilter, FiRotateCcw, FiX } from "react-icons/fi";
 import type { Product } from "@/types/Product";
 import { series } from "@/assets/series";
 import clsx from "clsx";
@@ -24,25 +24,45 @@ const FilterSection = ({
   onToggle,
 }: {
   title: string;
-  options: string[];
+  options: { name: string; value: string }[];
   selected: string[];
   onToggle: (value: string) => void;
-}) => (
-  <div>
-    <h4 className="text-xs font-medium mb-2">{title}</h4>
-    <div className="space-y-1">
-      {options.map((option) => (
-        <KuiCheckbox
-          key={option}
-          checked={selected.includes(option)}
-          onChange={() => onToggle(option)}
+}) => {
+  const [show, setShow] = useState(true);
+
+  return (
+    <div>
+      <h4 className="text-xs font-medium mb-2 flex justify-between items-center gap-1">
+        {title}
+
+        <KuiIconButton
+          variant="text"
+          size="small"
+          className="text-kui-secondary"
+          onClick={() => {
+            setShow(!show);
+          }}
         >
-          <span className="text-xs">{option}</span>
-        </KuiCheckbox>
-      ))}
+          <FiChevronDown
+            className={clsx("transition-transform", show && "rotate-180")}
+          />
+        </KuiIconButton>
+      </h4>
+      <div className="space-y-1" style={{ display: show ? "block" : "none" }}>
+        {options.map((option) => (
+          <KuiCheckbox
+            key={option.value}
+            value={option.value}
+            checked={selected.includes(option.value)}
+            onChange={() => onToggle(option.value)}
+          >
+            <span className="text-xs">{option.name}</span>
+          </KuiCheckbox>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 function Filter({ products, onFilterChange, className }: FilterProps) {
   const [selectedSwitches, setSelectedSwitches] = useState<string[]>([]);
@@ -135,17 +155,21 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
 
           <FilterSection
             title="スイッチ"
-            options={switches}
+            options={switches.map((s) => ({ name: s, value: s }))}
             selected={selectedSwitches}
             onToggle={createToggleHandler(setSelectedSwitches)}
           />
 
+          <hr className="my-4 border-kui-border" />
+
           <FilterSection
             title="シリーズ"
-            options={series.map((s) => s.name)}
+            options={series.map((s) => ({ name: s.name, value: s.id }))}
             selected={selectedSeries}
             onToggle={createToggleHandler(setSelectedSeries)}
           />
+
+          <hr className="my-4 border-kui-border" />
 
           {/* price filter */}
           <div>
@@ -172,6 +196,8 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
               />
             </div>
           </div>
+
+          <hr className="my-4 border-kui-border" />
 
           <p className="text-xs text-gray-600">
             {filteredProducts.length}件の商品が見つかりました

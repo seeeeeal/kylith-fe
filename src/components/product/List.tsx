@@ -137,8 +137,10 @@ function ProductList({ products, children }: ProductListProps) {
               </div>
             ))}
             {filteredProducts.length === 0 && (
-              <div className="text-center py-8 text-gray-500">
-                {t("product.noResults")}
+              <div className="flex items-center justify-center col-span-full">
+                <div className="text-center py-8">
+                  申し訳ありません。商品が見つかりませんでした。
+                </div>
               </div>
             )}
           </div>

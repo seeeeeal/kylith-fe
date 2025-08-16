@@ -10,7 +10,7 @@ export interface Product {
   image: string;
   category: string;
   switches?: string[];
-  colors?: string[];
+  colors: { name: string; image: string }[];
   layouts?: string[];
   status?: Status[];
   stock?: number;

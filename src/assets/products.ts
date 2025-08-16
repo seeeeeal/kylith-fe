@@ -75,8 +75,8 @@ const products = [
     ],
     series: "he" as const,
     stock: 0,
+    status: ["new"],
   },
-
   {
     id: "kylith-96",
     name: "Kylith 96",
@@ -102,7 +102,7 @@ const products = [
         image: "/96-white.webp",
       },
     ],
-    stock: 0,
+    stock: 10,
   },
   {
     id: "kylith-96-compact",
@@ -125,7 +125,7 @@ const products = [
         image: "/96-compact.webp",
       },
     ],
-    stock: 0,
+    stock: 10,
   },
   {
     id: "kylith-96-HE",
@@ -152,7 +152,8 @@ const products = [
       },
     ],
     series: "he" as const,
-    stock: 0,
+    stock: 10,
+    status: ["new"],
   },
 
   {
@@ -180,7 +181,7 @@ const products = [
         image: "/100-white.webp",
       },
     ],
-    stock: 0,
+    stock: 10,
   },
   {
     id: "kylith-100-compact",
@@ -218,15 +219,20 @@ const products = [
     battery: "5000mAh",
     price: 18800,
     image: "/100-HE.webp",
-    images: ["/100-HE.webp"],
+    images: ["/100-HE.webp", "/100-HE-white.webp"],
     colors: [
       {
         name: "黒",
         image: "/100-HE.webp",
       },
+      {
+        name: "白",
+        image: "/100-HE-white.webp",
+      },
     ],
     series: "he" as const,
-    stock: 0,
+    stock: 10,
+    status: ["new"],
   },
 ];
 
