@@ -1,5 +1,6 @@
 import { FiUser } from "react-icons/fi";
 import ReactMarkdown from "react-markdown";
+import { Fragment } from "react";
 
 interface Review {
   id: number;
@@ -44,7 +45,7 @@ function Review({ reviews, className = "" }: ReviewProps) {
 
           <div className="grid grid-cols-[auto_1fr_min-content] gap-x-2 gap-y-1 items-center">
             {[5, 4, 3, 2, 1].map((star) => (
-              <>
+              <Fragment key={star}>
                 <span className="text-sm text-kui-default font-medium flex items-center gap-1">
                   <span className="w-2 text-center">{star}</span>
                   <span className="text-sm text-kui-warning">★</span>
@@ -58,7 +59,7 @@ function Review({ reviews, className = "" }: ReviewProps) {
                 <span className="text-xxs text-kui-secondary whitespace-nowrap text-right">
                   {getStarPercentage(star)}
                 </span>
-              </>
+              </Fragment>
             ))}
           </div>
         </div>

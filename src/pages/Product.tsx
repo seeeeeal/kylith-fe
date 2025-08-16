@@ -42,7 +42,9 @@ function Product() {
   );
 
   // Add state for color and layout selection
-  const [selectedColor, setSelectedColor] = useState(product?.colors[0].name);
+  const [selectedColor, setSelectedColor] = useState(
+    product?.colors[0].name ?? "黒"
+  );
   const [selectedLayout, setSelectedLayout] = useState(
     t("product.englishLayout")
   );
@@ -192,7 +194,7 @@ function Product() {
                 shape="round"
                 disabled={product.stock === 0}
                 onClick={() => {
-                  addToCart(product as Product, quantity, {
+                  addToCart(product, quantity, {
                     switch: selectedSwitch,
                     color: selectedColor,
                     layout: selectedLayout,

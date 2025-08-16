@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   KuiButton,
   KuiCheckbox,
@@ -31,7 +31,7 @@ const FilterSection = ({
   <div>
     <h4 className="text-xs font-medium mb-2">{title}</h4>
     <div className="space-y-1">
-      {options.slice(0, 3).map((option) => (
+      {options.map((option) => (
         <KuiCheckbox
           key={option}
           checked={selected.includes(option)}
@@ -87,7 +87,7 @@ function Filter({ products, onFilterChange, className }: FilterProps) {
     setPriceRange([0, 20000]);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     onFilterChange(filteredProducts);
   }, [filteredProducts, onFilterChange]);
 
