@@ -1,4 +1,4 @@
-<!-- 言語: [🇯🇵 日本語](./README.ja.md) | [🇺🇸 English](./README.md) -->
+**Language:** [English](./README.md) | [日本語](./README.ja.md)
 
 # Kylith - Customized Keyboard EC Site
 
