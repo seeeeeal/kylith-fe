@@ -121,3 +121,6 @@ Feedback and suggestions are very welcome!
 ## 📄 License
 
 This project is intended for personal learning and portfolio use.
+
+⚠️ The product images used in this project are intended solely for design mockup purposes and are not used for commercial or sales activities.
+Copyrights belong to their respective owners. If there are any issues, we will respond promptly.
