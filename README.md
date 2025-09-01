@@ -1,217 +1,123 @@
-# Kylith - カスタムキーボード EC サイト
+<!-- 言語: [🇯🇵 日本語](./README.ja.md) | [🇺🇸 English](./README.md) -->
 
-**Kylith** は、美しさと性能を両立するカスタムキーボードブランドを想定したモダンな EC サイトです。  
-React + TypeScript をベースに、シンプルかつ高級感のある UI を目指して設計しました。
+# Kylith - Customized Keyboard EC Site
 
-## 🎯 プロジェクト概要
+**Kylith** is a modern EC site envisioned as a custom keyboard brand that combines beauty and performance.  
+Based on React + TypeScript, it is designed aiming for a simple yet luxurious UI.
 
-### 目的
+## 🎯 Project Overview
 
-- フロントエンド開発スキルの向上
-- モダンな Web 技術の実践
-- ポートフォリオとしての活用
+### Purpose
 
-### 特徴
+- Improve frontend development skills
+- Practice modern web technologies
+- Use as a portfolio
 
-- **レスポンシブデザイン**: モバイル・タブレット・デスクトップ対応
-- **国際化対応**: 日本語・英語の多言語対応
-- **カスタム UI ライブラリ**: 再利用可能なコンポーネント設計
-- **型安全性**: TypeScript による堅牢な開発
+### Features
 
-## 🛠 技術スタック
+- **Responsive Design**: Supports mobile, tablet, and desktop
+- **Internationalization**: Supports Japanese and English languages
+- **Custom UI Library**: Reusable component design
+- **Type Safety**: Robust development with TypeScript
 
-### フロントエンド
+## 🛠 Technology Stack
 
-- **React 19** - 最新の React 機能を活用
-- **TypeScript** - 型安全性と開発体験の向上
-- **Vite 6** - 高速な開発環境
-- **Tailwind CSS 4** - モダンな CSS フレームワーク
+### Frontend
 
-### 状態管理・ルーティング
+- **React 19** - Utilizing the latest React features
+- **TypeScript** - Enhancing type safety and development experience
+- **Vite 6** - Fast development environment
+- **Tailwind CSS 4** - Modern CSS framework
 
-- **React Context** - 軽量な状態管理
-- **React Router 7** - クライアントサイドルーティング
+### State Management & Routing
 
-### 国際化・UI
+- **React Context** - Lightweight state management
+- **React Router 7** - Client-side routing
 
-- **i18next** - 多言語対応
-- **React Icons** - アイコンライブラリ
-- **Swiper** - タッチスライダー
+### UI & Styling
 
-### 開発ツール
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **React Icons** - Icon library
+- **Swiper** - Touch slider library
 
-- **PNPM** - 高速なパッケージマネージャー
-- **ESLint** - コード品質管理
-- **Prettier** - コードフォーマット
+### Development Tools
 
-## 🎨 デザインシステム
+- **PNPM** - Efficient package manager
+- **ESLint** - Linter for code quality
+- **Prettier** - Code formatter
+- **Storybook** - UI component development in isolation
 
-### カラーパレット
+## 🚀 Setup
 
-```css
-kui-default: #1f2937    /* メインカラー */
-kui-primary: #3B82F6    /* プライマリ */
-kui-success: #10B981    /* 成功 */
-kui-warning: #F59E0B    /* 警告 */
-kui-danger: #EF4444     /* エラー */
-```
+### Prerequisites
 
-### カスタムコンポーネント
+- Node.js 18.0.0 or higher
+- PNPM 8.0.0 or higher
 
-- **KuiButton** - 多様なバリエーションのボタン
-- **KuiInputNumber** - 数量選択コンポーネント
-- **KuiToast** - 通知コンポーネント
-- **KuiSteps** - ステップ表示コンポーネント
-
-## z-index スケール（プロジェクト共通ルール）
-
-| 用途             | Tailwind クラス | 値  | 説明                     |
-| ---------------- | --------------- | --- | ------------------------ |
-| ベース           | `z-0`           | 0   | 通常のレイアウト         |
-| バッジ・ドロップ | `z-10`          | 10  | バッジ、ドロップダウン等 |
-| モーダル         | `z-50`          | 50  | ダイアログ、オーバーレイ |
-| トースト通知     | `z-100`         | 100 | 画面右上の通知           |
-| ローディング     | `z-200`         | 200 | 全画面ローディング       |
-
-> 必要に応じて`tailwind.config.ts`で z-index を拡張しています。
-
-## 🖥 ページ構成
-
-### 主要ページ
-
-- **🏠 Home** - ヒーローセクション、注目商品、特徴紹介
-- **🛍️ Products** - 商品一覧（フィルター機能付き）
-- **📦 Product Detail** - 商品詳細（カート追加機能）
-- **🛒 Cart** - ショッピングカート（数量変更・削除）
-- **💳 Checkout** - 決済フォーム（バリデーション付き）
-- **✅ Order Complete** - 注文完了ページ
-
-### 機能
-
-- **🔍 商品検索・フィルター** - レイアウト、スイッチ、価格範囲
-- **🌐 多言語対応** - 日本語・英語切り替え
-- **📱 レスポンシブデザイン** - 全デバイス対応
-- **🎨 ダークモード対応** - テーマ切り替え（準備中）
-
-## 🚀 セットアップ
-
-### 前提条件
-
-- Node.js 18.0.0 以上
-- PNPM 8.0.0 以上
-
-### インストール
+### Installation
 
 ```bash
-# リポジトリをクローン
+# Clone the repository
 git clone [repository-url]
-cd kylith
+cd kylith-fe
 
-# 依存関係をインストール
+# Install dependencies
 pnpm install
 
-# 開発サーバーを起動
+# Start development server
 pnpm dev
 ```
 
-### ビルド
+### Build
 
 ```bash
-# 本番用ビルド
+# Production build
 pnpm build
 
-# プレビュー
+# Preview
 pnpm preview
 ```
 
-## 📁 プロジェクト構造
+## 📁 Project Structure
 
 ```
 src/
-├── components/          # 再利用可能なコンポーネント
-│   ├── kui/            # カスタムUIライブラリ
+├── components/          # Reusable components
+│   ├── kui/             # Custom UI library
 │   └── ...
-├── pages/              # ページコンポーネント
-├── context/            # React Context
-├── types/              # TypeScript型定義
-├── assets/             # 静的ファイル
-├── i18n/               # 国際化設定
-└── main.tsx           # エントリーポイント
+├── pages/               # Page components
+├── context/             # React Context for state management
+├── types/               # TypeScript type definitions
+├── assets/              # Static files like images and fonts
+├── i18n/                # Internationalization settings
+└── main.tsx             # Entry point
 ```
 
-## 🎯 実装した機能
-
-### フロントエンド機能
-
-- ✅ レスポンシブデザイン
-- ✅ 多言語対応（日本語・英語）
-- ✅ カスタム UI ライブラリ
-- ✅ 商品フィルター機能
-- ✅ ショッピングカート機能
-- ✅ フォームバリデーション
-- ✅ トースト通知
-
-### 技術的な工夫
-
-- ✅ TypeScript による型安全性
-- ✅ モジュラーなコンポーネント設計
-- ✅ パフォーマンス最適化
-- ✅ アクセシビリティ対応
-- ✅ コード品質管理
-
-## 🔮 今後の予定
-
-### 短期目標
-
-- [ ] バックエンド開発（Node.js + TypeScript）
-- [ ] データベース連携
-- [ ] 認証システム
-
-### 中期目標
-
-- [ ] Next.js 版の開発
-- [ ] SEO 最適化
-- [ ] 決済システム統合
-
-### 長期目標
-
-- [ ] PWA 対応
-- [ ] パフォーマンス最適化
-- [ ] テスト実装
-
-## 📊 技術的な学び
+## 📊 Technical Learnings
 
 ### React/TypeScript
 
-- モダンな React Hooks の活用
-- TypeScript による型安全性の確保
-- コンポーネント設計のベストプラクティス
+- Utilizing modern React Hooks
+- Ensuring type safety with TypeScript
+- Best practices in component design
 
-### CSS/デザイン
+### CSS/Design
 
-- Tailwind CSS による効率的なスタイリング
-- レスポンシブデザインの実装
-- デザインシステムの構築
+- Efficient styling with Tailwind CSS
+- Implementing responsive design
+- Building design systems
 
-### 開発体験
+### Development Experience
 
-- Vite による高速開発環境
-- PNPM による効率的なパッケージ管理
-- ESLint によるコード品質管理
+- Fast development environment with Vite
+- Efficient package management with PNPM
+- Code quality management with ESLint
 
-## 🤝 コントリビューション
+## 🤝 Contribution
 
-このプロジェクトは学習目的で作成されています。  
-フィードバックや提案は大歓迎です！
+This project is created for learning purposes.  
+Feedback and suggestions are very welcome!
 
-## 📄 ライセンス
+## 📄 License
 
-このプロジェクトはポートフォリオ目的で作成されています。
-
-## 👨‍💻 作者
-
-**Seal** - フロントエンド開発者を目指す学習者
-
----
-
-⭐ このプロジェクトが役に立ったら、スターを押してください！
+This project is intended for personal learning and portfolio use.
